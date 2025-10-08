@@ -10,6 +10,20 @@ const Register = () => {
   const [selectedTrack, setSelectedTrack] = useState<typeof tracks[0] | null>(null);
   const tracks = [
     {
+      icon: Target,
+      title: "Smart Education",
+      description: "Innovate educational technology to transform learning experiences.",
+      link: "/Register/education",
+      color: "from-red-500 to-pink-500",
+      problemStatements: [
+        "Gamified Environmental Education Platform for Schools and Colleges",
+        "Smart Curriculum Activity & Attendance App",
+        "Automated Student Attendance Monitoring and Analytics System for Colleges",
+        "Digital Platform for Centralized Alumni Data Management and Engagement",
+        "Centralised Digital Platform for Comprehensive student activity record in HEIs"
+      ]
+    },
+    {
       icon: Code2,
       title: "Urban Tech and Smart Cities",
       description: "Develop innovative solutions for smart cities and urban challenges.",
@@ -23,14 +37,7 @@ const Register = () => {
         "Automated Comprehensive Technology Intelligence and Forecasting Platform"
       ]
     },
-    {
-      icon: Building2,
-      title: "Open Innovation (Hardware)",
-      description: "Create cutting-edge hardware prototypes and IoT solutions.",
-      link: "/Register/hardware",
-      color: "from-purple-500 to-violet-500",
-      problemStatements: []
-    },
+    
     {
       icon: Heart,
       title: "AgroTech and FoodTech",
@@ -46,19 +53,14 @@ const Register = () => {
       ]
     },
     {
-      icon: Target,
-      title: "Smart Education",
-      description: "Innovate educational technology to transform learning experiences.",
-      link: "/Register/education",
-      color: "from-red-500 to-pink-500",
-      problemStatements: [
-        "Gamified Environmental Education Platform for Schools and Colleges",
-        "Smart Curriculum Activity & Attendance App",
-        "Automated Student Attendance Monitoring and Analytics System for Colleges",
-        "Digital Platform for Centralized Alumni Data Management and Engagement",
-        "Centralised Digital Platform for Comprehensive student activity record in HEIs"
-      ]
+      icon: Building2,
+      title: "Open Innovation (Hardware)",
+      description: "Create cutting-edge hardware prototypes and IoT solutions.",
+      link: "/Register/hardware",
+      color: "from-purple-500 to-violet-500",
+      problemStatements: []
     },
+    
     {
       icon: Database,
       title: "Terraview",

@@ -45,39 +45,6 @@ const Index = () => {
 
   const tracks = [
     {
-      icon: Code2,
-      title: "Urban Tech and Smart Cities",
-      description: "Develop innovative solutions for smart cities and urban challenges.",
-      link: "/Register/urban-tech",
-      problemStatements: [
-        "Development of a mobile application for secure water level data collection from rivers using image processing",
-        "AI-Driven Pollution Source Identification, Forecasting & Policy Dashboard for Delhi-NCR",
-        "Centralized Vulnerability Detection and Intelligent Query Interface",
-        "Government offices productivity and engagement platform",
-        "Automated Comprehensive Technology Intelligence and Forecasting Platform"
-      ]
-    },
-    {
-      icon: Building2,
-      title: "Open Innovation (Hardware)",
-      description: "Create cutting-edge hardware prototypes and IoT solutions.",
-      link: "/Register/hardware",
-      problemStatements: []
-    },
-    {
-      icon: Heart,
-      title: "AgroTech and FoodTech",
-      description: "Build technology solutions for sustainable and smart farming.",
-      link: "/Register/agro-tech",
-      problemStatements: [
-        "Smart Crop Advisory System for Small and Marginal Farmers",
-        "Develop a blockchain-based system for botanical traceability of Ayurvedic herbs, including geo-tagging from the point of collection (farmers/wild collectors) to the final Ayurvedic formulation label.",
-        "Blockchain-Based Supply Chain Transparency for Agricultural Produce",
-        "AI-Powered Personal Farming Assistant for Kerala Farmers",
-        "Development of a Digital Farm Management Portal for implementing Biosecurity measures in Pig and Poultry Farms"
-      ]
-    },
-    {
       icon: Target,
       title: "Smart Education",
       description: "Innovate educational technology to transform learning experiences.",
@@ -90,6 +57,41 @@ const Index = () => {
         "Centralised Digital Platform for Comprehensive student activity record in HEIs"
       ]
     },
+    {
+      icon: Code2,
+      title: "Urban Tech and Smart Cities",
+      description: "Develop innovative solutions for smart cities and urban challenges.",
+      link: "/Register/urban-tech",
+      problemStatements: [
+        "Development of a mobile application for secure water level data collection from rivers using image processing",
+        "AI-Driven Pollution Source Identification, Forecasting & Policy Dashboard for Delhi-NCR",
+        "Centralized Vulnerability Detection and Intelligent Query Interface",
+        "Government offices productivity and engagement platform",
+        "Automated Comprehensive Technology Intelligence and Forecasting Platform"
+      ]
+    },
+    
+    {
+      icon: Heart,
+      title: "Agriculture and FoodTech",
+      description: "Build technology solutions for sustainable and smart farming.",
+      link: "/Register/agro-tech",
+      problemStatements: [
+        "Smart Crop Advisory System for Small and Marginal Farmers",
+        "Develop a blockchain-based system for botanical traceability of Ayurvedic herbs, including geo-tagging from the point of collection (farmers/wild collectors) to the final Ayurvedic formulation label.",
+        "Blockchain-Based Supply Chain Transparency for Agricultural Produce",
+        "AI-Powered Personal Farming Assistant for Kerala Farmers",
+        "Development of a Digital Farm Management Portal for implementing Biosecurity measures in Pig and Poultry Farms"
+      ]
+    },
+    {
+      icon: Building2,
+      title: "Open Innovation (Hardware)",
+      description: "Create cutting-edge hardware prototypes and IoT solutions.",
+      link: "/Register/hardware",
+      problemStatements: []
+    }
+    ,
     {
       icon: Database,
       title: "Terraview",
