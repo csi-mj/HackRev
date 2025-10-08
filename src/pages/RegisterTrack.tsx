@@ -1,0 +1,335 @@
+import { useMemo, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast";
+import { createClient } from "@supabase/supabase-js";
+import { Download } from "lucide-react";
+// Import template file - using dynamic import for .pptx files
+const templateFile = "/src/assets/Template.pptx";
+
+type TrackKey = "urban-tech" | "hardware" | "agro-tech" | "education";
+
+const TITLE_BY_TRACK: Record<TrackKey, string> = {
+  "urban-tech": "Urban Tech and Smart Cities",
+  hardware: "Open Innovation (Hardware)",
+  "agro-tech": "AgroTech and FoodTech",
+  education: "Smart Education",
+};
+
+const RegisterTrack = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const track = (params.track || "urban-tech") as TrackKey;
+
+  const trackTitle = useMemo(() => TITLE_BY_TRACK[track] || TITLE_BY_TRACK["urban-tech"], [track]);
+
+  const [submitting, setSubmitting] = useState(false);
+  const [teamSize, setTeamSize] = useState<number>(4);
+
+  const supabase = useMemo(() => {
+    const url = (import.meta.env.VITE_SUPABASE_URL || import.meta.env.NEXT_PUBLIC_SUPABASE_URL) as string;
+    const anon = (import.meta.env.VITE_SUPABASE_ANON || import.meta.env.NEXT_PUBLIC_SUPABASE_ANON) as string;
+    return createClient(url, anon);
+  }, []);
+
+  const tableByTrack: Record<TrackKey, string> = {
+    "urban-tech": "inn_soft",
+    hardware: "inn_hard",
+    education: "EdTech",
+    "agro-tech": "AgroTech",
+  };
+
+  const bucketByTrack: Record<TrackKey, string> = {
+    "urban-tech": "af_sf",
+    hardware: "af_hd",
+    education: "af_ed",
+    "agro-tech": "af_ag",
+  };
+
+  // Function to download the template file
+  const downloadTemplate = () => {
+    try {
+      const link = document.createElement('a');
+      link.href = templateFile;
+      link.download = 'HackRevolution_Template.pptx';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      toast({
+        title: "Template Downloaded",
+        description: "PPT template has been downloaded successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Download Failed",
+        description: "Failed to download the template. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formEl = e.currentTarget as HTMLFormElement;
+    const form = new FormData(formEl);
+
+    // Basic required validation
+    const requiredFields = [
+      "teamName",
+      "teamSize",
+      "leaderName",
+      "phone",
+      "email",
+      "college",
+      "department",
+      "year",
+    ];
+    for (const key of requiredFields) {
+      if (!String(form.get(key) || "").trim()) {
+        toast({ title: "Missing field", description: "Please fill all required fields." });
+        return;
+      }
+    }
+
+    // Validate team member fields based on team size (leader is separate)
+    const sizeNum = Number(form.get("teamSize") || 0);
+    const membersNeeded = Math.max(0, sizeNum - 1);
+    for (let i = 1; i <= membersNeeded; i++) {
+      const name = String(form.get(`member${i}`) || "").trim();
+      const roll = String(form.get(`member${i}Roll`) || "").trim();
+      if (!name || !roll) {
+        toast({ title: "Missing member details", description: `Please fill Member ${i} name and roll number.` });
+        return;
+      }
+    }
+
+    try {
+      setSubmitting(true);
+      const trackKey = track;
+
+      // 1) Upload abstract to storage if provided
+      const abstractFile = form.get("abstract") as File | null;
+      let abstractUrl: string | null = null;
+      if (abstractFile && abstractFile.size > 0) {
+        const filename = `${Date.now()}_${Math.random().toString(36).slice(2)}_${abstractFile.name}`;
+        const { data: uploadRes, error: uploadErr } = await supabase
+          .storage
+          .from(bucketByTrack[trackKey])
+          .upload(filename, abstractFile, { upsert: false, contentType: abstractFile.type });
+        if (uploadErr) throw uploadErr;
+        const storedPath = uploadRes?.path ?? filename;
+        const { data: pub } = supabase.storage.from(bucketByTrack[trackKey]).getPublicUrl(storedPath);
+        abstractUrl = pub.publicUrl;
+      }
+
+      // Prepare member fields based on selected team size (member1..memberN)
+      const size = sizeNum;
+      const memberFields: Record<string, FormDataEntryValue | null> = {};
+      for (let i = 1; i <= 5; i++) {
+        if (i <= Math.max(0, size - 1)) {
+          memberFields[`member${i}_name`] = form.get(`member${i}`);
+          memberFields[`member${i}_roll`] = form.get(`member${i}Roll`);
+        } else {
+          memberFields[`member${i}_name`] = null;
+          memberFields[`member${i}_roll`] = null;
+        }
+      }
+
+      // 2) Insert row into table
+      const payload = {
+        team_name: form.get("teamName"),
+        team_size: size,
+        leader_name: form.get("leaderName"),
+        leader_phone: form.get("phone"),
+        leader_email: form.get("email"),
+        college: form.get("college"),
+        department: form.get("department"),
+        year: form.get("year"),
+        ...memberFields,
+        abstract_url: abstractUrl,
+        track: trackKey,
+        created_at: new Date().toISOString(),
+      };
+
+      const { error } = await supabase.from(tableByTrack[trackKey]).insert(payload as any);
+      if (error) throw error;
+
+      formEl.reset();
+      // Redirect to success page with track title
+      navigate(`/registration-success?t=${encodeURIComponent(trackTitle)}`, { state: { trackTitle } });
+    } catch (err: any) {
+      console.error("Registration submission failed:", err);
+      toast({ title: "Registration failed", description: String(err?.message || err || "Unknown error") });
+      alert(`Registration failed. Please try again.\n\nDetails: ${String(err?.message || err || "Unknown error")}`);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen py-20 px-4">
+      <div className="container mx-auto max-w-3xl">
+        <div className="text-center mb-10 animate-slide-up">
+          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            {trackTitle} Registration
+          </h1>
+          <p className="text-muted-foreground">Provide your team details to register for this track.</p>
+        </div>
+
+        <Card className="glass-effect p-8 shadow-card border border-border">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <Label htmlFor="teamName">Team Name</Label>
+                <Input id="teamName" name="teamName" placeholder="Your Team" />
+              </div>
+              <div>
+                <Label htmlFor="teamSize">Team Size</Label>
+                <Select name="teamSize" value={String(teamSize)} onValueChange={(v) => setTeamSize(Number(v))}>
+                  <SelectTrigger id="teamSize">
+                    <SelectValue placeholder="Select (4-6)" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="4">4</SelectItem>
+                    <SelectItem value="5">5</SelectItem>
+                    <SelectItem value="6">6</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label htmlFor="leaderName">Team Leader Name</Label>
+                <Input id="leaderName" name="leaderName" placeholder="Full Name" />
+              </div>
+              <div>
+                <Label htmlFor="phone">Team Leader Mobile Number</Label>
+                <Input id="phone" name="phone" type="tel" placeholder="99999 99999" />
+              </div>
+              <div>
+                <Label htmlFor="email">Team Leader Email Id</Label>
+                <Input id="email" name="email" type="email" placeholder="name@example.com" />
+              </div>
+              <div>
+                <Label htmlFor="college">College</Label>
+                <Input id="college" name="college" placeholder="Your College" />
+              </div>
+              <div>
+                <Label htmlFor="department">Department</Label>
+                <Input id="department" name="department" placeholder="CSE / ECE / ..." />
+              </div>
+              <div>
+                <Label htmlFor="year">Year</Label>
+                <Input id="year" name="year" placeholder="III / IV / ..." />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <Label htmlFor="member1">Team Member 1</Label>
+                <Input id="member1" name="member1" />
+              </div>
+              <div>
+                <Label htmlFor="member1Roll">Team Member 1 Roll Number</Label>
+                <Input id="member1Roll" name="member1Roll" />
+              </div>
+              {(teamSize ?? 0) >= 3 && (
+              <div>
+                <Label htmlFor="member2">Team Member 2</Label>
+                <Input id="member2" name="member2" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 3 && (
+              <div>
+                <Label htmlFor="member2Roll">Team Member 2 Roll Number</Label>
+                <Input id="member2Roll" name="member2Roll" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 4 && (
+              <div>
+                <Label htmlFor="member3">Team Member 3</Label>
+                <Input id="member3" name="member3" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 4 && (
+              <div>
+                <Label htmlFor="member3Roll">Team Member 3 Roll Number</Label>
+                <Input id="member3Roll" name="member3Roll" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 5 && (
+              <div>
+                <Label htmlFor="member4">Team Member 4</Label>
+                <Input id="member4" name="member4" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 5 && (
+              <div>
+                <Label htmlFor="member4Roll">Team Member 4 Roll Number</Label>
+                <Input id="member4Roll" name="member4Roll" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 6 && (
+              <div>
+                <Label htmlFor="member5">Team Member 5</Label>
+                <Input id="member5" name="member5" />
+              </div>
+              )}
+              {(teamSize ?? 0) >= 6 && (
+              <div>
+                <Label htmlFor="member5Roll">Team Member 5 Roll Number</Label>
+                <Input id="member5Roll" name="member5Roll" />
+              </div>
+              )}
+            </div>
+
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="abstract">Submission of Abstract (PPT/PDF)</Label>
+                <Input id="abstract" name="abstract" type="file" accept=".pdf,.ppt,.pptx" />
+              </div>
+              <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg border border-border">
+                <div className="flex-1">
+                  <p className="text-sm font-medium">Need a template to get started?</p>
+                  <p className="text-xs text-muted-foreground">Download our sample PPT template with proper formatting</p>
+                </div>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  size="sm"
+                  onClick={downloadTemplate}
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Download Template
+                </Button>
+              </div>
+            </div>
+
+            <input type="hidden" name="track" value={track} />
+            <input type="hidden" name="teamSize" value={teamSize} />
+
+            <div className="flex items-center gap-3">
+              <Button type="submit" disabled={submitting} className="gradient-primary">
+                {submitting ? "Submitting..." : "Register"}
+              </Button>
+              <Link to="/Register">
+                <Button type="button" variant="outline" className="border-primary text-primary">
+                  Back to Tracks
+                </Button>
+              </Link>
+            </div>
+          </form>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterTrack;
+
+
