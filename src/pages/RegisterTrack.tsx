@@ -293,10 +293,10 @@ const RegisterTrack = () => {
                 <Input id="abstract" name="abstract" type="file" accept=".pdf,.ppt,.pptx" />
               </div>
               <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg border border-border">
-                <div className="flex-1">
-                  <p className="text-sm font-medium">Need a template to get started?</p>
-                  <p className="text-xs text-muted-foreground">Download our sample PPT template with proper formatting</p>
-                </div>
+                {/* <div className="flex-1">
+                  <p className="text-sm font-medium"></p>
+                  <p className="text-xs text-muted-foreground"></p>
+                </div> */}
                 <Button 
                   type="button" 
                   variant="outline" 

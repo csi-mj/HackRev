@@ -98,7 +98,7 @@ const Terraview = () => {
               <div className="flex items-center gap-3">
                 <Calendar className="h-5 w-5 text-muted-foreground" />
                 <span className="font-semibold">Date:</span>
-                <span>Sunday, January 5, 2025</span>
+                <span>Saturday, November 8, 2025</span>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="h-5 w-5 text-muted-foreground" />
@@ -226,15 +226,15 @@ const Terraview = () => {
               <div className="space-y-2 text-muted-foreground">
                 <div className="flex justify-between">
                   <span>Registration Opens:</span>
-                  <span>December 10, 2024</span>
+                  <span>October 9, 2025</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Registration Closes:</span>
-                  <span>December 27, 2024</span>
+                  <span>October 27, 2025</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Event Date:</span>
-                  <span className="font-semibold text-primary">January 5, 2025</span>
+                  <span className="font-semibold text-primary">November 8, 2025</span>
                 </div>
               </div>
             </div>
