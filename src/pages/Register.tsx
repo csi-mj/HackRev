@@ -20,7 +20,8 @@ const Register = () => {
         "Smart Curriculum Activity & Attendance App",
         "Automated Student Attendance Monitoring and Analytics System for Colleges",
         "Digital Platform for Centralized Alumni Data Management and Engagement",
-        "Centralised Digital Platform for Comprehensive student activity record in HEIs"
+        "Centralised Digital Platform for Comprehensive student activity record in HEIs",
+        "Smart Classroom & Timetable Scheduler"
       ]
     },
     {
@@ -30,11 +31,12 @@ const Register = () => {
       link: "/Register/urban-tech",
       color: "from-blue-500 to-cyan-500",
       problemStatements: [
-        "Development of a mobile application for secure water level data collection from rivers using image processing",
-        "AI-Driven Pollution Source Identification, Forecasting & Policy Dashboard for Delhi-NCR",
-        "Centralized Vulnerability Detection and Intelligent Query Interface",
-        "Government offices productivity and engagement platform",
-        "Automated Comprehensive Technology Intelligence and Forecasting Platform"
+        "Real-Time Public Transport Tracking for Small Cities",
+        "Smart Traffic Management System for Urban Congestion",
+        "Crowdsourced Civic Issue Reporting and Resolution System",
+        "AI-Based Rockfall Prediction and Alert System for Open-Pit Mines",
+        "Recovery and Reuse of Fresh Water Resources",
+        "Forecasting materials demand with machine learning for supply chain planning, procurement, and inventory optimization"
       ]
     },
     
@@ -45,11 +47,12 @@ const Register = () => {
       link: "/Register/agro-tech",
       color: "from-green-500 to-emerald-500",
       problemStatements: [
+        "Image-based Breed Recognition for Cattle and Buffaloes of India",
         "Smart Crop Advisory System for Small and Marginal Farmers",
-        "Develop a blockchain-based system for botanical traceability of Ayurvedic herbs, including geo-tagging from the point of collection (farmers/wild collectors) to the final Ayurvedic formulation label.",
-        "Blockchain-Based Supply Chain Transparency for Agricultural Produce",
-        "AI-Powered Personal Farming Assistant for Kerala Farmers",
-        "Development of a Digital Farm Management Portal for implementing Biosecurity measures in Pig and Poultry Farms"
+        "AI-Based Crop Recommendation System for Farmers",
+        "AI-Powered Crop Yield Prediction and Optimization",
+        "AI-Powered Monitoring of Crop Health, Soil Condition, and Pest Risks Using Sensor and Imaging Data",
+        "Enhancing Farmer Productivity through Innovative Technology Solutions"
       ]
     },
     {
