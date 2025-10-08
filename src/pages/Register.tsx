@@ -40,7 +40,7 @@ const Register = () => {
     
     {
       icon: Heart,
-      title: "AgroTech and FoodTech",
+      title: "Agriculture and FoodTech",
       description: "Build technology solutions for sustainable and smart farming.",
       link: "/Register/agro-tech",
       color: "from-green-500 to-emerald-500",
