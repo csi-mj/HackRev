@@ -10,7 +10,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { createClient } from "@supabase/supabase-js";
 import { Download } from "lucide-react";
 // Import template file - using dynamic import for .pptx files
-const templateFile = "/src/assets/Template.pptx";
+const templateFile = "/public/Template.pptx";
 
 type TrackKey = "urban-tech" | "hardware" | "agro-tech" | "education";
 
