@@ -77,59 +77,60 @@ const Register = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20 px-4">
+    <div className="min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 animate-slide-up">
-          <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <div className="text-center mb-12 sm:mb-16 animate-slide-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-4">
             Choose Your Track
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto px-4">
             Pick a theme below to begin your registration.
           </p>
         </div>
 
         {/* Main 4 Tracks Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 px-4">
           {tracks.slice(0, 4).map((track, index) => (
             <Card
               key={index}
-              className="glass-effect p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up"
+              className="glass-effect p-4 sm:p-6 md:p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="mb-6">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-4 transition-smooth group-hover:scale-110 shadow-glow`}>
-                  <track.icon className="h-8 w-8 text-white" />
+              <div className="mb-4 sm:mb-6">
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-3 sm:mb-4 transition-smooth group-hover:scale-110 shadow-glow`}>
+                  <track.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white" />
                 </div>
-                <h2 className="text-2xl font-heading font-bold mb-3">{track.title}</h2>
-                <p className="text-muted-foreground">{track.description}</p>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h2>
+                <p className="text-muted-foreground text-sm sm:text-base">{track.description}</p>
               </div>
               
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2 sm:gap-3">
                 {track.problemStatements.length > 0 && (
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button 
                         variant="outline" 
-                        className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-smooth"
+                        size="sm"
+                        className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-smooth text-xs sm:text-sm"
                         onClick={() => setSelectedTrack(track)}
                       >
                         View Problem Statements
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                    <DialogContent className="max-w-xs sm:max-w-2xl md:max-w-4xl max-h-[80vh] overflow-y-auto mx-4">
                       <DialogHeader>
-                        <DialogTitle className="text-2xl font-heading font-bold text-center mb-4">
+                        <DialogTitle className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-center mb-4">
                           {track.title} - Problem Statements
                         </DialogTitle>
                       </DialogHeader>
-                      <div className="space-y-4">
+                      <div className="space-y-3 sm:space-y-4">
                         {track.problemStatements.map((statement, idx) => (
-                          <Card key={idx} className="p-4 border border-border">
-                            <div className="flex items-start gap-3">
-                              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                          <Card key={idx} className="p-3 sm:p-4 border border-border">
+                            <div className="flex items-start gap-2 sm:gap-3">
+                              <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs sm:text-sm font-bold">
                                 {idx + 1}
                               </div>
-                              <p className="text-muted-foreground leading-relaxed">{statement}</p>
+                              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{statement}</p>
                             </div>
                           </Card>
                         ))}
@@ -138,8 +139,8 @@ const Register = () => {
                   </Dialog>
                 )}
                 <Link to={track.link}>
-                  <Button className="w-full gradient-primary hover:opacity-90 transition-smooth shadow-glow">
-                    Register Now <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button size="sm" className="w-full text-xs sm:text-sm gradient-primary hover:opacity-90 transition-smooth shadow-glow">
+                    Register Now <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                 </Link>
               </div>
@@ -148,31 +149,31 @@ const Register = () => {
         </div>
 
         {/* Special Terraview Track - Centered */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-12 sm:mb-16 px-4">
           {tracks.slice(4).map((track, index) => (
             <Card
               key={index + 4}
-              className="glass-effect p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up max-w-md"
+              className="glass-effect p-4 sm:p-6 md:p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up w-full max-w-xs sm:max-w-sm md:max-w-md"
               style={{ animationDelay: `${(index + 4) * 0.1}s` }}
             >
-              <div className="mb-6">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-4 transition-smooth group-hover:scale-110 shadow-glow`}>
-                  <track.icon className="h-8 w-8 text-white" />
+              <div className="mb-4 sm:mb-6">
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-3 sm:mb-4 transition-smooth group-hover:scale-110 shadow-glow`}>
+                  <track.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white" />
                 </div>
-                <h2 className="text-2xl font-heading font-bold mb-3">{track.title}</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h2>
                 {track.isSpecial && track.specialLabel && (
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 dark:text-yellow-400 text-sm font-semibold mb-3 border border-yellow-500/30">
-                    <GraduationCap className="h-4 w-4 mr-2" />
+                  <div className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 dark:text-yellow-400 text-xs sm:text-sm font-semibold mb-2 sm:mb-3 border border-yellow-500/30">
+                    <GraduationCap className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                     {track.specialLabel}
                   </div>
                 )}
-                <p className="text-muted-foreground">{track.description}</p>
+                <p className="text-muted-foreground text-sm sm:text-base">{track.description}</p>
               </div>
               
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2 sm:gap-3">
                 <Link to={track.link}>
-                  <Button className="w-full gradient-primary hover:opacity-90 transition-smooth shadow-glow">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button size="sm" className="w-full text-xs sm:text-sm gradient-primary hover:opacity-90 transition-smooth shadow-glow">
+                    Learn More <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
                   </Button>
                 </Link>
               </div>

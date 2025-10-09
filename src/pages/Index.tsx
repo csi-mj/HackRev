@@ -199,47 +199,46 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 gradient-hero opacity-30" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
         
-        <div className="container mx-auto relative z-10 text-center">
+        <div className="container mx-auto relative z-10 text-center px-4 sm:px-6">
           <div className="animate-slide-up">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold mb-4 sm:mb-6 leading-tight">
               <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse-glow">
                 Hack Revolution
               </span>
             </h1>
-            <div className="flex items-center justify-center gap-3 mb-6 text-muted-foreground">
-              <span className="text-lg md:text-xl">Powered by</span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6 text-muted-foreground">
+              <span className="text-base sm:text-lg md:text-xl">Powered by</span>
               <img
                 src={acesLogo}
                 alt="ACES"
-                className="h-8 md:h-10 w-auto object-contain"
+                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
               />
             </div>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-2 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4 sm:mb-6 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto px-2">
               Where Innovation Meets Collaboration. Build the Future in 15 Hours.
             </p>
             <PrizePoolCountUp />
             
-            <div className="flex flex-wrap gap-6 justify-center mb-20">
-              <Link to="/Register">
-                <Button size="lg" className="text-xl px-10 py-6 rounded-2xl gradient-primary hover:opacity-90 transition-smooth shadow-glow">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16 sm:mb-20 px-4">
+              <Link to="/Register" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto text-lg sm:text-xl px-8 sm:px-10 py-4 sm:py-6 rounded-2xl gradient-primary hover:opacity-90 transition-smooth shadow-glow">
                   Register Now
                 </Button>
               </Link>
             </div>
-            {/* Trimmed hero: ends at Register button as requested */}
           </div>
         </div>
       </section>
 
       {/* Countdown below hero */}
-      <section id="home" className="px-4 anchor-offset">
+      <section id="home" className="px-4 sm:px-6 lg:px-8 anchor-offset">
         <div className="container mx-auto">
-          <div className="glass-effect rounded-2xl p-8 max-w-5xl mx-auto -mt-10 shadow-card">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Registration Closes In</h2>
+          <div className="glass-effect rounded-2xl p-4 sm:p-6 md:p-8 max-w-5xl mx-auto -mt-6 sm:-mt-8 md:-mt-10 shadow-card">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold mb-4 sm:mb-6 text-center">Registration Closes In</h2>
             <CountDown targetDate={targetDate} />
           </div>
         </div>
@@ -248,52 +247,53 @@ const Index = () => {
       {/* About HackRevolution removed per spec */}
 
       {/* Tracks Section */}
-      <section id="themes" className="py-20 px-4 bg-gradient-to-b from-transparent to-card/50 anchor-offset">
+      <section id="themes" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-card/50 anchor-offset">
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-3 sm:mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-4">
             Hackathon Themes
           </h2>
-          <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground text-base sm:text-lg mb-12 sm:mb-16 max-w-xs sm:max-w-xl md:max-w-2xl mx-auto px-4">
             Select a theme that excites you and build solutions that make a difference
           </p>
           
           {/* Main 4 Tracks Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto mb-8 sm:mb-12 px-4">
             {tracks.slice(0, 4).map((track, index) => (
               <Card
                 key={index}
-                className="glass-effect p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up"
+                className="glass-effect p-4 sm:p-6 md:p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <track.icon className="h-16 w-16 text-primary mb-4 transition-smooth group-hover:scale-110" />
-                <h3 className="text-2xl font-heading font-bold mb-3">{track.title}</h3>
-                <p className="text-muted-foreground mb-6">{track.description}</p>
-                <div className="flex flex-col gap-3">
+                <track.icon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4 transition-smooth group-hover:scale-110" />
+                <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h3>
+                <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{track.description}</p>
+                <div className="flex flex-col gap-2 sm:gap-3">
                   {track.problemStatements.length > 0 && (
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button 
                           variant="outline" 
-                          className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-smooth"
+                          size="sm"
+                          className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-smooth text-xs sm:text-sm"
                           onClick={() => setSelectedTrack(track)}
                         >
                           View Problem Statements
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogContent className="max-w-xs sm:max-w-2xl md:max-w-4xl max-h-[80vh] overflow-y-auto mx-4">
                         <DialogHeader>
-                          <DialogTitle className="text-2xl font-heading font-bold text-center mb-4">
+                          <DialogTitle className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-center mb-4">
                             {track.title} - Problem Statements
                           </DialogTitle>
                         </DialogHeader>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                           {track.problemStatements.map((statement, idx) => (
-                            <Card key={idx} className="p-4 border border-border">
-                              <div className="flex items-start gap-3">
-                                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                            <Card key={idx} className="p-3 sm:p-4 border border-border">
+                              <div className="flex items-start gap-2 sm:gap-3">
+                                <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs sm:text-sm font-bold">
                                   {idx + 1}
                                 </div>
-                                <p className="text-muted-foreground leading-relaxed">{statement}</p>
+                                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{statement}</p>
                               </div>
                             </Card>
                           ))}
@@ -302,7 +302,7 @@ const Index = () => {
                     </Dialog>
                   )}
                   <Link to={track.link}>
-                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth w-full">
+                    <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth w-full text-xs sm:text-sm">
                       Register for This Track
                     </Button>
                   </Link>
@@ -312,25 +312,25 @@ const Index = () => {
           </div>
 
           {/* Special Terraview Track - Centered */}
-          <div className="flex justify-center">
+          <div className="flex justify-center px-4">
             {tracks.slice(4).map((track, index) => (
               <Card
                 key={index + 4}
-                className="glass-effect p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up max-w-md"
+                className="glass-effect p-4 sm:p-6 md:p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up w-full max-w-xs sm:max-w-sm md:max-w-md"
                 style={{ animationDelay: `${(index + 4) * 0.1}s` }}
               >
-                <track.icon className="h-16 w-16 text-primary mb-4 transition-smooth group-hover:scale-110" />
-                <h3 className="text-2xl font-heading font-bold mb-3">{track.title}</h3>
+                <track.icon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4 transition-smooth group-hover:scale-110" />
+                <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h3>
                 {track.isSpecial && track.specialLabel && (
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 dark:text-yellow-400 text-sm font-semibold mb-3 border border-yellow-500/30">
-                    <GraduationCap className="h-4 w-4 mr-2" />
+                  <div className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 dark:text-yellow-400 text-xs sm:text-sm font-semibold mb-2 sm:mb-3 border border-yellow-500/30">
+                    <GraduationCap className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                     {track.specialLabel}
                   </div>
                 )}
-                <p className="text-muted-foreground mb-6">{track.description}</p>
-                <div className="flex flex-col gap-3">
+                <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{track.description}</p>
+                <div className="flex flex-col gap-2 sm:gap-3">
                   <Link to={track.link}>
-                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth w-full">
+                    <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth w-full text-xs sm:text-sm">
                       Learn More
                     </Button>
                   </Link>
@@ -342,30 +342,30 @@ const Index = () => {
       </section>
 
       {/* Timeline */}
-      <section id="timeline" className="py-24 px-4 anchor-offset">
+      <section id="timeline" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 anchor-offset">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 sm:mb-12 md:mb-16 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-4">
             Event Schedule
           </h2>
-          <div className="relative mx-auto">
+          <div className="relative mx-auto px-4">
             {/* center vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 bg-gradient-to-b from-primary via-secondary to-primary opacity-70" />
+            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-1 sm:-translate-x-1/2 bg-gradient-to-b from-primary via-secondary to-primary opacity-70" />
 
-            <div className="space-y-16">
+            <div className="space-y-8 sm:space-y-12 md:space-y-16">
               {timeline.map((item, idx) => {
                 const isLeft = idx % 2 === 0;
                 return (
-                  <div key={item.step} className={`relative flex items-center ${isLeft ? 'justify-start' : 'justify-end'}`}>
+                  <div key={item.step} className={`relative flex items-center ${isLeft ? 'justify-start' : 'justify-end sm:justify-end'}`}>
                     {/* node */}
-                    <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded-full bg-primary shadow-[0_0_20px_rgba(168,85,247,0.6)] ring-4 ring-primary/30" />
+                    <div className="absolute left-0 sm:left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
+                      <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-primary shadow-[0_0_20px_rgba(168,85,247,0.6)] ring-2 sm:ring-4 ring-primary/30" />
                     </div>
-                    <div className={`${isLeft ? 'mr-8' : 'ml-8'} w-full md:w-[45%]`}>
-                      <Card className="glass-effect p-6 shadow-card border border-border">
-                        <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/15 text-primary text-sm font-semibold mb-3">
+                    <div className={`ml-8 sm:${isLeft ? 'mr-8' : 'ml-8'} w-full sm:w-[45%]`}>
+                      <Card className="glass-effect p-4 sm:p-6 shadow-card border border-border">
+                        <div className="inline-flex items-center px-3 sm:px-4 py-1 sm:py-2 rounded-full bg-primary/15 text-primary text-xs sm:text-sm font-semibold mb-2 sm:mb-3">
                           Step {item.step} • {item.date}
                         </div>
-                        <div className="text-lg font-heading font-semibold">{item.title}</div>
+                        <div className="text-base sm:text-lg font-heading font-semibold">{item.title}</div>
                       </Card>
                     </div>
                   </div>
@@ -377,32 +377,32 @@ const Index = () => {
       </section>
 
       {/* Prizes */}
-      <section id="prizes" className="py-20 px-4 bg-gradient-to-b from-transparent to-card/50 anchor-offset">
+      <section id="prizes" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-card/50 anchor-offset">
         <div className="container mx-auto max-w-5xl text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-8 sm:mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-4">
             Prizes
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-            <Card className="glass-effect p-8 shadow-card border border-border flex flex-col items-center">
-              <Medal className="h-16 w-16 text-primary mb-4" />
-              <div className="text-2xl font-heading font-bold">₹25,000</div>
-              <div className="text-muted-foreground">2nd Prize</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-8 sm:mb-10 px-4">
+            <Card className="glass-effect p-6 sm:p-8 shadow-card border border-border flex flex-col items-center order-2 md:order-1">
+              <Medal className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4" />
+              <div className="text-xl sm:text-2xl font-heading font-bold">₹25,000</div>
+              <div className="text-muted-foreground text-sm sm:text-base">2nd Prize</div>
             </Card>
-            <Card className="glass-effect p-8 shadow-card border border-border flex flex-col items-center">
-              <Trophy className="h-16 w-16 text-primary mb-4" />
-              <div className="text-2xl font-heading font-bold">₹35,000</div>
-              <div className="text-muted-foreground">1st Prize</div>
+            <Card className="glass-effect p-6 sm:p-8 shadow-card border border-border flex flex-col items-center order-1 md:order-2">
+              <Trophy className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4" />
+              <div className="text-xl sm:text-2xl font-heading font-bold">₹35,000</div>
+              <div className="text-muted-foreground text-sm sm:text-base">1st Prize</div>
             </Card>
-            <Card className="glass-effect p-8 shadow-card border border-border flex flex-col items-center">
-              <Award className="h-16 w-16 text-primary mb-4" />
-              <div className="text-2xl font-heading font-bold">₹10,000</div>
-              <div className="text-muted-foreground">3rd Prize</div>
+            <Card className="glass-effect p-6 sm:p-8 shadow-card border border-border flex flex-col items-center order-3 md:order-3">
+              <Award className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4" />
+              <div className="text-xl sm:text-2xl font-heading font-bold">₹10,000</div>
+              <div className="text-muted-foreground text-sm sm:text-base">3rd Prize</div>
             </Card>
           </div>
-          <div className="text-xl text-center text-primary font-heading">
+          <div className="text-lg sm:text-xl text-center text-primary font-heading px-4">
             Consolation Prize of ₹5,000 in each track will also be given
           </div>
-          <div className="mt-4 text-xl text-center text-primary font-heading">
+          <div className="mt-2 sm:mt-4 text-lg sm:text-xl text-center text-primary font-heading px-4">
             Prizes worth ₹75,000 in each track
           </div>
         </div>
@@ -515,9 +515,9 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-12 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Organized By
           </h2>
-          <div className="flex items-center justify-center gap-10 md:gap-16 mb-14">
-            <img src={csiLogo} alt="CSI" className="h-28 md:h-40 w-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]" />
-            <img src={ecellLogo} alt="E‑Cell" className="h-28 md:h-40 w-auto object-contain drop-shadow-[0_0_35px_rgba(59,130,246,0.35)]" />
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-14">
+            <img src={csiLogo} alt="CSI" className="h-24 sm:h-28 md:h-40 w-auto max-w-full object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]" />
+            <img src={ecellLogo} alt="E‑Cell" className="h-24 sm:h-28 md:h-40 w-auto max-w-full object-contain drop-shadow-[0_0_35px_rgba(59,130,246,0.35)]" />
           </div>
 
           <h3 className="text-3xl md:text-4xl font-heading font-bold mb-8">For Any Queries Contact</h3>
@@ -563,11 +563,11 @@ const PrizePoolCountUp = () => {
     new Intl.NumberFormat('en-IN').format(num);
 
   return (
-    <div className="mb-8">
-      <div className="text-xl md:text-2xl text-muted-foreground mb-2">Cash Prizes Worth</div>
+    <div className="mb-6 sm:mb-8">
+      <div className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-2">Cash Prizes Worth</div>
       <div
         className="font-heading font-extrabold tracking-tight leading-none 
-                   text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-primary via-secondary to-primary 
+                   text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-gradient-to-r from-primary via-secondary to-primary 
                    bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(168,85,247,0.35)]"
       >
         ₹ {formatIndian(value)}

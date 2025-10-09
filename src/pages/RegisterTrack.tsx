@@ -173,18 +173,18 @@ const RegisterTrack = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="container mx-auto max-w-3xl">
-        <div className="text-center mb-10 animate-slide-up">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+    <div className="min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-xs sm:max-w-2xl md:max-w-3xl">
+        <div className="text-center mb-8 sm:mb-10 animate-slide-up">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2 sm:mb-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent px-4">
             {trackTitle} Registration
           </h1>
-          <p className="text-muted-foreground">Provide your team details to register for this track.</p>
+          <p className="text-sm sm:text-base text-muted-foreground px-4">Provide your team details to register for this track.</p>
         </div>
 
-        <Card className="glass-effect p-8 shadow-card border border-border">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card className="glass-effect p-4 sm:p-6 md:p-8 shadow-card border border-border">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <Label htmlFor="teamName">Team Name</Label>
                 <Input id="teamName" name="teamName" placeholder="Your Team" />
@@ -228,7 +228,7 @@ const RegisterTrack = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <Label htmlFor="member1">Team Member 1</Label>
                 <Input id="member1" name="member1" />
@@ -289,22 +289,22 @@ const RegisterTrack = () => {
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="abstract">Submission of Abstract (PPT/PDF)</Label>
+                <Label htmlFor="abstract">Submission of Abstract (PPT)</Label>
                 <Input id="abstract" name="abstract" type="file" accept=".pdf,.ppt,.pptx" />
               </div>
-              <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg border border-border">
-                {/* <div className="flex-1">
-                  <p className="text-sm font-medium"></p>
-                  <p className="text-xs text-muted-foreground"></p>
-                </div> */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-muted/50 rounded-lg border border-border">
+                <div className="flex-1">
+                  <p className="text-sm font-medium">Need a template to get started?</p>
+                  <p className="text-xs text-muted-foreground">Download our sample PPT template with proper formatting</p>
+                </div>
                 <Button 
                   type="button" 
                   variant="outline" 
                   size="sm"
                   onClick={downloadTemplate}
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth w-full sm:w-auto"
                 >
-                  <Download className="h-4 w-4 mr-2" />
+                  <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                   Download Template
                 </Button>
               </div>
