@@ -179,7 +179,7 @@ const Terraview = () => {
             <div className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-primary" />
               <a href="tel:+919908784538" className="text-primary hover:text-primary/80">
-                +91 81259 81069
+                +91 99087 84538
               </a>
             </div>
             <div className="flex items-center gap-3">
