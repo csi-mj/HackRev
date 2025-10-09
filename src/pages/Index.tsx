@@ -108,7 +108,7 @@ const Index = () => {
     { step: 3, date: "9th Oct - 27th Oct", title: "Registrations & Idea Submission" },
     { step: 4, date: "27th Oct - 3rd Nov", title: "Idea Evaluation" },
     { step: 5, date: "5th November", title: "Announcement Of Finalist" },
-    { step: 6, date: "8th November 2025", title: "Grand Finale of Hack Revolution" },
+    { step: 6, date: "8th November 2025", title: "Hack Revolution Grand Finale" },
   ];
 
   const history = [
