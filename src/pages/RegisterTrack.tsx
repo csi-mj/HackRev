@@ -184,7 +184,7 @@ const RegisterTrack = () => {
         team_name: form.get("teamName"),
         team_size: size,
         leader_name: form.get("leaderName"),
-        leader_roll: form.get("leaderRoll"),
+        team_lead_roll: form.get("leaderRoll"),
         leader_phone: form.get("phone"),
         leader_email: form.get("email"),
         college: form.get("college"),
