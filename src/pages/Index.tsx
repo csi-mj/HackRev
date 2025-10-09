@@ -239,7 +239,7 @@ const Index = () => {
       <section id="home" className="px-4 anchor-offset">
         <div className="container mx-auto">
           <div className="glass-effect rounded-2xl p-8 max-w-5xl mx-auto -mt-10 shadow-card">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Regristration Closes In</h2>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6 text-center">Registration Closes In</h2>
             <CountDown targetDate={targetDate} />
           </div>
         </div>
