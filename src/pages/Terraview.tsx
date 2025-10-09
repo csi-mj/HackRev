@@ -172,7 +172,7 @@ const Terraview = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-primary" />
-              <a href="hackrevolution@mjcollege.ac.in" className="text-primary hover:text-primary/80">
+              <a href="mailto:hackrevolution@mjcollege.ac.in" className="text-primary hover:text-primary/80">
               hackrevolution@mjcollege.ac.in
               </a>
             </div>
