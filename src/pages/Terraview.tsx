@@ -11,45 +11,16 @@ import {
   GraduationCap,
   Database,
   FileText,
-  Download,
-  ExternalLink,
   ArrowLeft,
   Phone,
   Mail
 } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
 import terraviewPoster from "@/assets/Terraview.jpeg";
 import csiLogo from "@/assets/csi_logo.png";
 import ecellLogo from "@/assets/ecell_logo.png";
 import acesLogo from "@/assets/aces.png";
 
-// Template file path
-const templateFile = "/src/assets/Template.pptx";
-
 const Terraview = () => {
-  const { toast } = useToast();
-
-  // Function to download the template file
-  const downloadTemplate = () => {
-    try {
-      const link = document.createElement('a');
-      link.href = templateFile;
-      link.download = 'HackRevolution_Template.pptx';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      toast({
-        title: "Template Downloaded",
-        description: "PPT template has been downloaded successfully.",
-      });
-    } catch (error) {
-      toast({
-        title: "Download Failed",
-        description: "Failed to download the template. Please try again.",
-        variant: "destructive",
-      });
-    }
-  };
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -155,101 +126,43 @@ const Terraview = () => {
           </Card>
         </div>
 
-        {/* Guidelines and Requirements */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <Card className="glass-effect p-8 shadow-card border border-border animate-slide-up">
-            <h2 className="text-2xl font-heading font-bold mb-6 flex items-center">
-              <FileText className="h-6 w-6 mr-3 text-primary" />
-              Track Guidelines
-            </h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold text-lg mb-3">Eligibility:</h3>
-                <p className="text-muted-foreground">Only first-year students are allowed to participate in this track.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-3">Team Composition:</h3>
-                <p className="text-muted-foreground">This track is individual-based; no teams are allowed.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-3">Evaluation Criteria:</h3>
-                <ul className="space-y-1 text-muted-foreground">
-                  <li>• Innovation</li>
-                  <li>• Insightfulness</li>
-                  <li>• Practical Relevance</li>
-                  <li>• Technical Execution</li>
-                </ul>
-              </div>
-            </div>
-          </Card>
-
-          <Card className="glass-effect p-8 shadow-card border border-border animate-slide-up">
-            <h2 className="text-2xl font-heading font-bold mb-6 flex items-center">
-              <Download className="h-6 w-6 mr-3 text-primary" />
-              Important Links
-            </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold mb-2">Dataset Drive Link:</h3>
-                <a href="#" className="text-primary hover:text-primary/80 flex items-center gap-2">
-                  <ExternalLink className="h-4 w-4" />
-                  Access Datasets for Analysis
-                </a>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">YouTube Tutorials:</h3>
-                <a href="#" className="text-primary hover:text-primary/80 flex items-center gap-2">
-                  <ExternalLink className="h-4 w-4" />
-                  Terraview Tutorial Link
-                </a>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">PPT Template:</h3>
-                <button 
-                  onClick={downloadTemplate}
-                  className="text-primary hover:text-primary/80 flex items-center gap-2 transition-colors"
-                >
-                  <Download className="h-4 w-4" />
-                  Download PPT Template
-                </button>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Registration Information */}
+        {/* Guidelines */}
         <Card className="glass-effect p-8 shadow-card border border-border mb-12 animate-slide-up">
-          <h2 className="text-2xl font-heading font-bold mb-6 text-center">Registration Information</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="text-2xl font-heading font-bold mb-6 flex items-center">
+            <FileText className="h-6 w-6 mr-3 text-primary" />
+            Track Guidelines
+          </h2>
+          <div className="space-y-6">
             <div>
-              <h3 className="font-semibold text-lg mb-4">Key Dates:</h3>
-              <div className="space-y-2 text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Registration Opens:</span>
-                  <span>October 9, 2025</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Registration Closes:</span>
-                  <span>October 27, 2025</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Event Date:</span>
-                  <span className="font-semibold text-primary">November 8, 2025</span>
-                </div>
-              </div>
+              <h3 className="font-semibold text-lg mb-3">Eligibility:</h3>
+              <p className="text-muted-foreground">Only first-year students are allowed to participate in this track.</p>
             </div>
             <div>
-              <h3 className="font-semibold text-lg mb-4">How to Register:</h3>
-              <ol className="space-y-2 text-muted-foreground text-sm">
-                <li>1. Download the ACES Hub App</li>
-                <li>2. Navigate to Events/Hackathon</li>
-                <li>3. Login/Register on the app</li>
-                <li>4. Select Hack Revolution 2025</li>
-                <li>5. Choose Solo registration</li>
-                <li>6. Select "Data Analysis with Terraview"</li>
-                <li>7. Upload your PPT and files</li>
-              </ol>
+              <h3 className="font-semibold text-lg mb-3">Team Composition:</h3>
+              <p className="text-muted-foreground">This track is individual-based; no teams are allowed.</p>
             </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-3">Evaluation Criteria:</h3>
+              <ul className="space-y-1 text-muted-foreground">
+                <li>• Innovation</li>
+                <li>• Insightfulness</li>
+                <li>• Practical Relevance</li>
+                <li>• Technical Execution</li>
+              </ul>
+            </div>
+          </div>
+        </Card>
+
+        {/* Registration Notice */}
+        <Card className="glass-effect p-8 shadow-card border border-border mb-12 animate-slide-up">
+          <h2 className="text-2xl font-heading font-bold mb-6 text-center">Registration Notice</h2>
+          <div className="text-center">
+            <p className="text-lg text-muted-foreground mb-4">
+              Registrations will begin after <span className="font-semibold text-primary">25th October 2025</span>
+            </p>
+            <p className="text-muted-foreground">
+              Stay tuned for more updates on registration opening!
+            </p>
           </div>
         </Card>
 
@@ -259,50 +172,32 @@ const Terraview = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex items-center gap-3">
               <Mail className="h-5 w-5 text-primary" />
-              <a href="mailto:aces-soft@aces-co.com" className="text-primary hover:text-primary/80">
-                aces-soft@aces-co.com
+              <a href="hackrevolution@mjcollege.ac.in" className="text-primary hover:text-primary/80">
+              hackrevolution@mjcollege.ac.in
               </a>
             </div>
             <div className="flex items-center gap-3">
               <Phone className="h-5 w-5 text-primary" />
-              <a href="tel:8125981069" className="text-primary hover:text-primary/80">
-                8125981069
+              <a href="tel:+919908784538" className="text-primary hover:text-primary/80">
+                +91 81259 81069
+              </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <Phone className="h-5 w-5 text-primary" />
+              <a href="tel:+917780227803" className="text-primary hover:text-primary/80">
+                +91 77802 27803
               </a>
             </div>
           </div>
         </Card>
 
-        {/* App Download Links */}
-        <Card className="glass-effect p-8 shadow-card border border-border mb-12 animate-slide-up">
-          <h2 className="text-2xl font-heading font-bold mb-6 text-center">Download ACES Hub App</h2>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <a href="#" className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-black/80 transition-colors">
-              <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-                <span className="text-black font-bold text-sm">📱</span>
-              </div>
-              <div className="text-left">
-                <div className="text-sm opacity-80">Download on the</div>
-                <div className="font-semibold">App Store</div>
-              </div>
-            </a>
-            <a href="#" className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-black/80 transition-colors">
-              <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-                <span className="text-black font-bold text-sm">🤖</span>
-              </div>
-              <div className="text-left">
-                <div className="text-sm opacity-80">GET IT ON</div>
-                <div className="font-semibold">Google Play</div>
-              </div>
-            </a>
-          </div>
-        </Card>
 
         {/* Organized By */}
         <Card className="glass-effect p-8 shadow-card border border-border text-center animate-slide-up">
           <h2 className="text-2xl font-heading font-bold mb-6">Organized By</h2>
-          <div className="flex items-center justify-center gap-10 md:gap-16 mb-6">
-            <img src={csiLogo} alt="CSI" className="h-28 md:h-40 w-auto object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]" />
-            <img src={ecellLogo} alt="E‑Cell" className="h-28 md:h-40 w-auto object-contain drop-shadow-[0_0_35px_rgba(59,130,246,0.35)]" />
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-6">
+            <img src={csiLogo} alt="CSI" className="h-24 sm:h-28 md:h-40 w-auto max-w-full object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.35)]" />
+            <img src={ecellLogo} alt="E‑Cell" className="h-24 sm:h-28 md:h-40 w-auto max-w-full object-contain drop-shadow-[0_0_35px_rgba(59,130,246,0.35)]" />
           </div>
           <div className="flex items-center justify-center gap-3 text-muted-foreground">
             <span className="text-lg md:text-xl">Powered by</span>

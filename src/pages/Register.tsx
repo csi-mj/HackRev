@@ -3,14 +3,14 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Code2, Heart, Building2, Target, ArrowRight, Database, GraduationCap } from "lucide-react";
+import { ArrowRight, GraduationCap } from "lucide-react";
 
 const Register = () => {
   // State for problem statements dialog
   const [selectedTrack, setSelectedTrack] = useState<typeof tracks[0] | null>(null);
   const tracks = [
     {
-      icon: Target,
+      image: "/SmartEd.png",
       title: "Smart Education",
       description: "Innovate educational technology to transform learning experiences.",
       link: "/Register/education",
@@ -25,7 +25,7 @@ const Register = () => {
       ]
     },
     {
-      icon: Code2,
+      image: "/UrbanTech.png",
       title: "Urban Tech and Smart Cities",
       description: "Develop innovative solutions for smart cities and urban challenges.",
       link: "/Register/urban-tech",
@@ -41,7 +41,7 @@ const Register = () => {
     },
     
     {
-      icon: Heart,
+      image: "/Agriculture.png",
       title: "Agriculture and FoodTech",
       description: "Build technology solutions for sustainable and smart farming.",
       link: "/Register/agro-tech",
@@ -56,7 +56,7 @@ const Register = () => {
       ]
     },
     {
-      icon: Building2,
+      image: "/Hardware.png",
       title: "Open Innovation (Hardware)",
       description: "Create cutting-edge hardware prototypes and IoT solutions.",
       link: "/Register/hardware",
@@ -65,7 +65,7 @@ const Register = () => {
     },
     
     {
-      icon: Database,
+      image: "/Terraview.png",
       title: "Terraview",
       description: "Data Analytics track for first-year students using Terraview software.",
       link: "/Terraview",
@@ -97,9 +97,9 @@ const Register = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-4 sm:mb-6">
-                <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-3 sm:mb-4 transition-smooth group-hover:scale-110 shadow-glow`}>
-                  <track.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white" />
-                </div>
+                {track.image ? (
+                  <img src={track.image} alt={track.title} className="h-16 sm:h-20 md:h-24 w-full max-w-full object-contain rounded-xl mb-3 sm:mb-4 transition-smooth group-hover:scale-105" />
+                ) : null}
                 <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h2>
                 <p className="text-muted-foreground text-sm sm:text-base">{track.description}</p>
               </div>
@@ -157,9 +157,9 @@ const Register = () => {
               style={{ animationDelay: `${(index + 4) * 0.1}s` }}
             >
               <div className="mb-4 sm:mb-6">
-                <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-3 sm:mb-4 transition-smooth group-hover:scale-110 shadow-glow`}>
-                  <track.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white" />
-                </div>
+                {track.image ? (
+                  <img src={track.image} alt={track.title} className="h-16 sm:h-20 md:h-24 w-full max-w-full object-contain rounded-xl mb-3 sm:mb-4 transition-smooth group-hover:scale-105" />
+                ) : null}
                 <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h2>
                 {track.isSpecial && track.specialLabel && (
                   <div className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 dark:text-yellow-400 text-xs sm:text-sm font-semibold mb-2 sm:mb-3 border border-yellow-500/30">

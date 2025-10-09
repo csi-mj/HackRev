@@ -24,7 +24,7 @@ const App = () => (
       <BrowserRouter>
         <div className="flex flex-col min-h-screen overflow-x-hidden">
           <Navbar />
-          <main className="flex-1 pt-28 overflow-x-hidden">
+          <main className="flex-1 pt-20 sm:pt-24 md:pt-28 overflow-x-hidden">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/Register" element={<Register />} />

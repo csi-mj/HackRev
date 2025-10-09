@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Building2, Target, Wallet, Trophy, Clock } from "lucide-react";
+import { Building2, Target, Wallet, Trophy, Clock } from "lucide-react";
 
 const Result = () => {
   const tracks = [
     {
-      icon: Heart,
+      icon: Building2,
       title: "Healthcare Innovation",
       link: "/result/healthcare",
       status: "Results Available",

@@ -21,6 +21,36 @@ const TITLE_BY_TRACK: Record<TrackKey, string> = {
   education: "Smart Education",
 };
 
+const PROBLEM_STATEMENTS: Record<TrackKey, string[]> = {
+  "urban-tech": [
+    "Real-Time Public Transport Tracking for Small Cities",
+    "Smart Traffic Management System for Urban Congestion",
+    "Crowdsourced Civic Issue Reporting and Resolution System",
+    "AI-Based Rockfall Prediction and Alert System for Open-Pit Mines",
+    "Recovery and Reuse of Fresh Water Resources",
+    "Forecasting materials demand with machine learning for supply chain planning, procurement, and inventory optimization"
+  ],
+  hardware: [
+    "Open Innovation - Hardware Solutions"
+  ],
+  "agro-tech": [
+    "Image-based Breed Recognition for Cattle and Buffaloes of India",
+    "Smart Crop Advisory System for Small and Marginal Farmers",
+    "AI-Based Crop Recommendation System for Farmers",
+    "AI-Powered Crop Yield Prediction and Optimization",
+    "AI-Powered Monitoring of Crop Health, Soil Condition, and Pest Risks Using Sensor and Imaging Data",
+    "Enhancing Farmer Productivity through Innovative Technology Solutions"
+  ],
+  education: [
+    "Gamified Environmental Education Platform for Schools and Colleges",
+    "Smart Curriculum Activity & Attendance App",
+    "Automated Student Attendance Monitoring and Analytics System for Colleges",
+    "Digital Platform for Centralized Alumni Data Management and Engagement",
+    "Centralised Digital Platform for Comprehensive student activity record in HEIs",
+    "Smart Classroom & Timetable Scheduler"
+  ],
+};
+
 const RegisterTrack = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -31,6 +61,7 @@ const RegisterTrack = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [teamSize, setTeamSize] = useState<number>(4);
+  const [selectedProblemStatement, setSelectedProblemStatement] = useState<string>("");
 
   const supabase = useMemo(() => {
     const url = (import.meta.env.VITE_SUPABASE_URL || import.meta.env.NEXT_PUBLIC_SUPABASE_URL) as string;
@@ -97,6 +128,12 @@ const RegisterTrack = () => {
       }
     }
 
+    // Validate problem statement selection
+    if (!selectedProblemStatement.trim()) {
+      toast({ title: "Missing problem statement", description: "Please select a problem statement." });
+      return;
+    }
+
     // Validate team member fields based on team size (leader is separate)
     const sizeNum = Number(form.get("teamSize") || 0);
     const membersNeeded = Math.max(0, sizeNum - 1);
@@ -151,6 +188,7 @@ const RegisterTrack = () => {
         college: form.get("college"),
         department: form.get("department"),
         year: form.get("year"),
+        title: selectedProblemStatement, // Add the selected problem statement as title
         ...memberFields,
         abstract_url: abstractUrl,
         track: trackKey,
@@ -199,6 +237,21 @@ const RegisterTrack = () => {
                     <SelectItem value="4">4</SelectItem>
                     <SelectItem value="5">5</SelectItem>
                     <SelectItem value="6">6</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="sm:col-span-2">
+                <Label htmlFor="problemStatement">Problem Statement</Label>
+                <Select value={selectedProblemStatement} onValueChange={setSelectedProblemStatement}>
+                  <SelectTrigger id="problemStatement">
+                    <SelectValue placeholder="Select a problem statement" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {PROBLEM_STATEMENTS[track].map((statement, index) => (
+                      <SelectItem key={index} value={statement}>
+                        {statement}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>

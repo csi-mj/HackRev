@@ -5,20 +5,15 @@ import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import CountDown from "@/components/CountDown";
 import { 
-  Code2, 
   Users, 
   Trophy, 
   Zap, 
-  Target, 
-  Heart, 
-  Building2,
   Calendar,
   MapPin,
   Clock,
   Lightbulb,
   Award,
   Medal,
-  Database,
   GraduationCap
 } from "lucide-react";
 import csiLogo from "@/assets/csi_logo.png";
@@ -45,7 +40,7 @@ const Index = () => {
 
   const tracks = [
     {
-      icon: Target,
+      image: "/SmartEd.png",
       title: "Smart Education",
       description: "Innovate educational technology to transform learning experiences.",
       link: "/Register/education",
@@ -59,7 +54,7 @@ const Index = () => {
       ]
     },
     {
-      icon: Code2,
+      image: "/UrbanTech.png",
       title: "Urban Tech and Smart Cities",
       description: "Develop innovative solutions for smart cities and urban challenges.",
       link: "/Register/urban-tech",
@@ -74,7 +69,7 @@ const Index = () => {
     },
     
     {
-      icon: Heart,
+      image: "/Agriculture.png",
       title: "Agriculture and FoodTech",
       description: "Build technology solutions for sustainable and smart farming.",
       link: "/Register/agro-tech",
@@ -88,7 +83,7 @@ const Index = () => {
       ]
     },
     {
-      icon: Building2,
+      image: "/Hardware.png",
       title: "Open Innovation (Hardware)",
       description: "Create cutting-edge hardware prototypes and IoT solutions.",
       link: "/Register/hardware",
@@ -96,7 +91,7 @@ const Index = () => {
     }
     ,
     {
-      icon: Database,
+      image: "/Terraview.png",
       title: "Terraview",
       description: "Data Analytics track for first-year students using Terraview software.",
       link: "/Terraview",
@@ -264,7 +259,9 @@ const Index = () => {
                 className="glass-effect p-4 sm:p-6 md:p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <track.icon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4 transition-smooth group-hover:scale-110" />
+                {track.image ? (
+                  <img src={track.image} alt={track.title} className="h-16 sm:h-20 md:h-24 w-full max-w-full object-contain rounded-xl mb-3 sm:mb-4 transition-smooth group-hover:scale-105" />
+                ) : null}
                 <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h3>
                 <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{track.description}</p>
                 <div className="flex flex-col gap-2 sm:gap-3">
@@ -319,7 +316,9 @@ const Index = () => {
                 className="glass-effect p-4 sm:p-6 md:p-8 shadow-card transition-smooth hover:scale-105 hover:shadow-glow border border-border group animate-slide-up w-full max-w-xs sm:max-w-sm md:max-w-md"
                 style={{ animationDelay: `${(index + 4) * 0.1}s` }}
               >
-                <track.icon className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 text-primary mb-3 sm:mb-4 transition-smooth group-hover:scale-110" />
+                {track.image ? (
+                  <img src={track.image} alt={track.title} className="h-16 sm:h-20 md:h-24 w-full max-w-full object-contain rounded-xl mb-3 sm:mb-4 transition-smooth group-hover:scale-105" />
+                ) : null}
                 <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold mb-2 sm:mb-3">{track.title}</h3>
                 {track.isSpecial && track.specialLabel && (
                   <div className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 dark:text-yellow-400 text-xs sm:text-sm font-semibold mb-2 sm:mb-3 border border-yellow-500/30">
@@ -418,11 +417,37 @@ const Index = () => {
             <div>
               <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Team Specification</h3>
               <ul className="list-decimal pl-6 space-y-2 text-lg">
-                <li>Each team should consist of 4-6 participants.</li>
+                <li>Each team should consist of 4–6 participants.</li>
                 <li>Students can form teams from different branches and years.</li>
-                <li>The Hackathon will be on Saturday 8th November 2025 from 7.00 AM – 10.00 PM. Prizes will be announced immediately after the hackathon.</li>
-                <li>All participant will have to make their own travel and accommodation arrangements.</li>
-                <li>The organisers will provide Lunch, Tea and Snacks along with registration kits and goodies.</li>
+                <li>All participants must make their own travel and accommodation arrangements.</li>
+                <li>At least one team member must be physically present during sign-in.</li>
+                <li>Entire teams must be available to present during the Judging Round.</li>
+                <li>Organisers will provide lunch, tea, and snacks, along with registration kits and goodies.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Event Schedule</h3>
+              <ul className="list-decimal pl-6 space-y-2 text-lg">
+                <li>The hackathon will be held on Saturday, 8th November 2025, from 7:00 AM – 10:00 PM.</li>
+                <li>Prizes will be announced immediately after the hackathon.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Domains & Problem Statements</h3>
+              <ul className="list-decimal pl-6 space-y-2 text-lg">
+                <li>This year, Hack Revolution 2025 features three core domains, each addressing real-world challenges through innovation and technology.</li>
+                <li>Participants must choose and work only on the official problem statements released under these three domains:
+                  <ul className="list-disc pl-6 mt-2 space-y-1">
+                    <li>Smart Education – Innovate solutions to enhance learning experiences, accessibility, and digital education tools.</li>
+                    <li>Urban Tech & Smart Cities – Build systems that make cities smarter, more efficient, and sustainable through technology.</li>
+                    <li>Agriculture & Food Tech – Develop solutions to improve agricultural productivity, food safety, and supply-chain efficiency.</li>
+                  </ul>
+                </li>
+                <li>Teams must select one problem statement from the above domains and design their solution accordingly.</li>
+                <li>Custom or self-defined problem statements will not be accepted in these domains.</li>
+                <li>The Open Innovation Hardware track is an exception, where teams have the freedom to propose and build any innovative hardware-based solution of their choice.</li>
+                <li>All proposed ideas, whether domain-specific or open innovation, must be original, feasible, and impactful.</li>
+                <li>Projects should align with the hackathon's vision of driving innovation and solving real-world challenges.</li>
               </ul>
             </div>
             <div>
@@ -430,47 +455,53 @@ const Index = () => {
               <ul className="list-decimal pl-6 space-y-2 text-lg">
                 <li>Teams can submit only one abstract.</li>
                 <li>A student can be part of only one team.</li>
-                <li>The teams must follow the PPT template provided for idea submission.</li>
-                <li>The registration window will be open from 9th Oct 2025 to 27th Oct 2025.</li>
-                <li>The hardware track must include a block diagram and list of components along with the abstract. 220V AC power will be provided; teams should arrange their components/batteries.</li>
+                <li>Teams must follow the official PPT template provided for idea submission.</li>
+                <li>The registration window will be open from 9th October 2025 to 27th October 2025, and no entries or submissions will be accepted after the deadline under any circumstances.</li>
+                <li>For the Hardware Track, abstracts must include a block diagram and a list of components.</li>
+                <li>220V AC power will be provided; teams must bring their own components and batteries.</li>
               </ul>
             </div>
             <div>
               <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Abstract Submission</h3>
               <ul className="list-decimal pl-6 space-y-2 text-lg">
-                <li>Abstracts should justify how the problem is being solved; cost‑effective solutions with a business model are encouraged.</li>
-                <li>Abstracts should not contain any form of code.</li>
-                <li>Ideas/solutions must be new and not presented in any previous program.</li>
-                <li>Include an algorithm/flow chart explaining the workflow.</li>
-                <li>Provide details of software tools/languages/environment used.</li>
+                <li>Abstracts should clearly justify how the problem is being solved; cost-effective and sustainable solutions with a potential business model are encouraged.</li>
+                <li>Abstracts should not include any code.</li>
+                <li>Ideas and solutions must be original and not presented in any previous program or hackathon.</li>
+                <li>Include an algorithm or flowchart explaining the workflow.</li>
+                <li>Provide details of the software tools, programming languages, and environments used.</li>
+                <li>For the Hardware Track, include a block diagram and list of components along with the abstract.</li>
+                <li>220V AC power will be provided; teams should arrange their own components and batteries.</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Shortlisting of teams</h3>
+              <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Shortlisting of Teams</h3>
               <ul className="list-decimal pl-6 space-y-2 text-lg">
-                <li>Post submission, ideas will be evaluated by experts from Industry and Academia.</li>
-                <li>Evaluation criteria: novelty, complexity, clarity, feasibility, practicability, sustainability, impact, UX, and potential for future work.</li>
-                <li>A max of 15 teams will be shortlisted per track and 5 waitlisted.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Final Registration</h3>
-              <ul className="list-decimal pl-6 space-y-2 text-lg">
-                <li>Shortlisted teams will be informed through their registered emails.</li>
-                <li>Team must register before 27th October.</li>
-                <li>Teams that fail to register will be disqualified.</li>
-                <li>College photo ID is mandatory for participating.</li>
+                <li>After submission, ideas will be evaluated by experts from industry and academia.</li>
+                <li>Evaluation criteria include novelty, complexity, clarity, feasibility, practicability, sustainability, impact, user experience (UX), and potential for future work.</li>
+                <li>A maximum of 15 teams will be shortlisted per track, with 5 teams on the waitlist.</li>
+                <li>Shortlisted teams will be informed via email and must confirm their registration within the given deadline. Failure to do so will result in disqualification.</li>
               </ul>
             </div>
             <div>
               <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Other Details</h3>
               <ul className="list-decimal pl-6 space-y-2 text-lg">
-                <li>There will be three prizes per track: ₹35,000, ₹25,000, ₹10,000 and a consolation prize of ₹5,000. Prize worth ₹75,000 per track; total ₹3 Lakhs across four tracks.</li>
-                <li>Prize money will be transferred equally to team members within 15 days. Provide name, account number, and IFSC. No cash prizes.</li>
-                <li>In case of a tie, organisers’ decision on prize distribution is final.</li>
-                <li>Projects with large peripheral hardware must be pre‑approved by organizers.</li>
-                <li>At least one team member must be physically present during sign‑in.</li>
-                <li>Teams must be available to present during their assigned slot.</li>
+                <li>Prize money will be transferred to the team lead or chosen team member within 15 days of the result announcement.</li>
+                <li>Teams must provide name, account number, and IFSC code for fund transfer.</li>
+                <li>No in-hand cash will be provided.</li>
+                <li>In case of a tie, the organisers' decision on prize distribution will be final.</li>
+                <li>Projects involving large peripheral hardware must be pre-approved by the organisers.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-heading font-semibold mb-4 rules-heading">Code of Conduct</h3>
+              <ul className="list-decimal pl-6 space-y-2 text-lg">
+                <li>All participants must carry a valid college photo ID throughout the event.</li>
+                <li>Teams are fully responsible for the safety, handling, and maintenance of their own equipment and belongings.</li>
+                <li>The organisers reserve the right to disqualify any team involved in plagiarism, misconduct, misrepresentation, or violation of event rules.</li>
+                <li>Participants are expected to maintain professionalism, respect, and ethical conduct at all times during the hackathon.</li>
+                <li>Any kind of misbehavior, disrespect, or inappropriate conduct toward volunteers, organisers, or fellow participants will not be tolerated and may result in immediate disqualification.</li>
+                <li>Any form of disruptive behavior, cheating, or rule violation will lead to immediate disqualification.</li>
+                <li>All disputes or decisions during the event will be handled at the sole discretion of the organising committee, and their decision will be final and binding.</li>
               </ul>
             </div>
           </Card>
@@ -533,7 +564,7 @@ const Index = () => {
               <div className="text-muted-foreground">Phone: <a className="text-primary" href="tel:+919908784538">+91 9908784538</a></div>
             </Card>
           </div>
-          <div className="text-lg">Email Us At: <a className="text-primary" href="mailto:info@hackrevolution.in">info@hackrevolution.in</a></div>
+          <div className="text-lg">Email Us At: <a className="text-primary" href="mailto:hackrevolution@mjcollege.ac.in">hackrevolution@mjcollege.ac.in</a></div>
         </div>
       </section>
     </div>
