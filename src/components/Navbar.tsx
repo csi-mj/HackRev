@@ -76,7 +76,7 @@ const Navbar = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="w-full justify-start text-sm sm:text-base text-muted-foreground hover:text-foreground transition-smooth"
+                  className="w-full justify-center text-sm sm:text-base text-muted-foreground hover:text-foreground transition-smooth"
                 >
                   {link.label}
                 </Button>
