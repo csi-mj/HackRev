@@ -115,6 +115,7 @@ const RegisterTrack = () => {
       "teamName",
       "teamSize",
       "leaderName",
+      "leaderRoll",
       "phone",
       "email",
       "college",
@@ -183,6 +184,7 @@ const RegisterTrack = () => {
         team_name: form.get("teamName"),
         team_size: size,
         leader_name: form.get("leaderName"),
+        leader_roll: form.get("leaderRoll"),
         leader_phone: form.get("phone"),
         leader_email: form.get("email"),
         college: form.get("college"),
@@ -258,6 +260,10 @@ const RegisterTrack = () => {
               <div>
                 <Label htmlFor="leaderName">Team Leader Name</Label>
                 <Input id="leaderName" name="leaderName" placeholder="Full Name" />
+              </div>
+              <div>
+                <Label htmlFor="leaderRoll">Team Leader Roll Number</Label>
+                <Input id="leaderRoll" name="leaderRoll" placeholder="Roll Number" />
               </div>
               <div>
                 <Label htmlFor="phone">Team Leader Mobile Number</Label>
