@@ -248,7 +248,7 @@ const RegisterTrack = () => {
                   <SelectTrigger id="problemStatement">
                     <SelectValue placeholder="Select a problem statement" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="max-w-[90vw] whitespace-normal break-words">
                     {PROBLEM_STATEMENTS[track].map((statement, index) => (
                       <SelectItem key={index} value={statement}>
                         {statement}
