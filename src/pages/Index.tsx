@@ -421,7 +421,7 @@ const Index = () => {
                 <li>Students can form teams from different branches and years.</li>
                 <li>All participants must make their own travel and accommodation arrangements.</li>
                 <li>At least one team member must be physically present during sign-in.</li>
-                <li>Entire teams must be available to present during the Judging Round.</li>
+                <li>All team members must be present during the judging round.</li>
                 <li>Organisers will provide lunch, tea, and snacks, along with registration kits and goodies.</li>
               </ul>
             </div>
@@ -457,8 +457,6 @@ const Index = () => {
                 <li>A student can be part of only one team.</li>
                 <li>Teams must follow the official PPT template provided for idea submission.</li>
                 <li>The registration window will be open from 9th October 2025 to 27th October 2025, and no entries or submissions will be accepted after the deadline under any circumstances.</li>
-                <li>For the Hardware Track, abstracts must include a block diagram and a list of components.</li>
-                <li>220V AC power will be provided; teams must bring their own components and batteries.</li>
               </ul>
             </div>
             <div>
