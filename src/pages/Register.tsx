@@ -181,17 +181,19 @@ const Register = () => {
           ))}
         </div>
 
-        <Card className="glass-effect p-8 text-center shadow-card border border-border">
-          <h3 className="text-2xl font-heading font-bold mb-4">Hackathon Themes</h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+        <Card className="glass-effect p-6 sm:p-8 text-center shadow-card border border-border mx-4">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold mb-4">Hackathon Themes</h3>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto text-sm sm:text-base">
             Each theme offers unique opportunities to showcase your skills and build innovative solutions. 
             Stay tuned for future events!
           </p>
-          <a href="/#about">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth">
-              Learn More About Hack Revolution
-            </Button>
-          </a>
+          <div className="flex justify-center">
+            <a href="/#about">
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
+                Learn More About Hack Revolution
+              </Button>
+            </a>
+          </div>
         </Card>
       </div>
     </div>
