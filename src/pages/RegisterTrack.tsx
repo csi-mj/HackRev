@@ -7,8 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { createClient } from "@supabase/supabase-js";
-import { Download } from "lucide-react";
+import { Download, Info } from "lucide-react";
 // Import template file - using dynamic import for .pptx files
 const templateFile = "/Template.pptx";
 
@@ -121,6 +122,7 @@ const RegisterTrack = () => {
       "college",
       "department",
       "year",
+      "aces_screenshot",
     ];
     for (const key of requiredFields) {
       if (!String(form.get(key) || "").trim()) {
@@ -166,6 +168,21 @@ const RegisterTrack = () => {
         abstractUrl = pub.publicUrl;
       }
 
+      // Upload ACES screenshot PDF to aces bucket
+      const acesScreenshotFile = form.get("aces_screenshot") as File | null;
+      let acesScreenshotUrl: string | null = null;
+      if (acesScreenshotFile && acesScreenshotFile.size > 0) {
+        const acesFilename = `${Date.now()}_${Math.random().toString(36).slice(2)}_${acesScreenshotFile.name}`;
+        const { data: acesUploadRes, error: acesUploadErr } = await supabase
+          .storage
+          .from("aces")
+          .upload(acesFilename, acesScreenshotFile, { upsert: false, contentType: acesScreenshotFile.type });
+        if (acesUploadErr) throw acesUploadErr;
+        const acesStoredPath = acesUploadRes?.path ?? acesFilename;
+        const { data: acesPub } = supabase.storage.from("aces").getPublicUrl(acesStoredPath);
+        acesScreenshotUrl = acesPub.publicUrl;
+      }
+
       // Prepare member fields based on selected team size (member1..memberN)
       const size = sizeNum;
       const memberFields: Record<string, FormDataEntryValue | null> = {};
@@ -193,6 +210,7 @@ const RegisterTrack = () => {
         title: selectedProblemStatement, // Add the selected problem statement as title
         ...memberFields,
         abstract_url: abstractUrl,
+        aces_screenshot: acesScreenshotUrl,
         track: trackKey,
         created_at: new Date().toISOString(),
       };
@@ -348,8 +366,76 @@ const RegisterTrack = () => {
 
             <div className="space-y-4">
               <div className="space-y-2">
+                <Label htmlFor="aces_screenshot">Aces App Registration Screenshots (Upload PDF) *</Label>
+                <Input 
+                  id="aces_screenshot" 
+                  name="aces_screenshot" 
+                  type="file" 
+                  accept=".pdf" 
+                  required 
+                  className="file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 file:cursor-pointer cursor-pointer"
+                />
+                
+                
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      size="sm"
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth w-full sm:w-auto"
+                    >
+                      <Info className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                      View Instructions
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md mx-4">
+                    <DialogHeader>
+                      <DialogTitle className="text-lg font-heading font-bold text-center mb-4">
+                        ACES Hub Registration Instructions
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div className="bg-muted/50 p-4 rounded-lg border border-border">
+                        <h3 className="font-semibold mb-3">Instructions:</h3>
+                        <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
+                          <li>Open the Play Store or App Store and download the ACES Hub app.</li>
+                          <li>Ensure that all your teammates register on the app.</li>
+                          <li>Attach a PDF containing screenshots of the profiles of all registered teammates.</li>
+                          <li className="text-red-500 font-semibold">Failure to do so will lead to disqualification.</li>
+                        </ol>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <a 
+                          href="https://play.google.com/store/apps/details?id=com.acesindiadev.hackathon" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-smooth text-sm"
+                        >
+                          Google Play Store
+                        </a>
+                        <a 
+                          href="https://apps.apple.com/in/app/aces-hub/id6473405011" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-smooth text-sm"
+                        >
+                          Apple App Store
+                        </a>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+              <div className="space-y-2">
                 <Label htmlFor="abstract">Submission of Abstract (PPT)</Label>
-                <Input id="abstract" name="abstract" type="file" accept=".pdf,.ppt,.pptx" />
+                <Input 
+                  id="abstract" 
+                  name="abstract" 
+                  type="file" 
+                  accept=".pdf,.ppt,.pptx" 
+                  className="file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 file:cursor-pointer cursor-pointer"
+                />
               </div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-muted/50 rounded-lg border border-border">
                 <div className="flex-1">
