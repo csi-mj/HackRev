@@ -389,7 +389,7 @@ const RegisterTrack = () => {
                       View Instructions
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-md mx-4">
+                  <DialogContent className="max-w-md mx-4 sm:mx-0 w-[calc(100vw-2rem)] sm:w-auto fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <DialogHeader>
                       <DialogTitle className="text-lg font-heading font-bold text-center mb-4">
                         ACES Hub Registration Instructions
@@ -433,7 +433,7 @@ const RegisterTrack = () => {
                   id="abstract" 
                   name="abstract" 
                   type="file" 
-                  accept=".pdf,.ppt,.pptx" 
+                  accept=".ppt,.pptx" 
                   className="file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 file:cursor-pointer cursor-pointer"
                 />
               </div>
