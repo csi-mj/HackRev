@@ -200,20 +200,27 @@ const Index = () => {
         
         <div className="container mx-auto relative z-10 text-center px-4 sm:px-6">
           <div className="animate-slide-up">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold mb-4 sm:mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse-glow">
-                Hack Revolution
-              </span>
-            </h1>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6 text-muted-foreground">
-              <span className="text-base sm:text-lg md:text-xl">Powered by</span>
+            <div className="mb-4 sm:mb-6">
+              <img
+                src="/mobile_logo.png"
+                alt="Hack Revolution"
+                className="mx-auto w-[95vw] h-[160px] sm:hidden object-contain"
+              />
+              <img
+                src="/Logo.png"
+                alt="Hack Revolution"
+                className="mx-auto hidden sm:block w-[420px] md:w-[520px] lg:w-[620px] xl:w-[720px] h-auto object-contain"
+              />
+            </div>
+            <div className="flex flex-row items-center justify-center gap-3 sm:gap-3 mb-4 sm:mb-6 text-muted-foreground">
+              <span className="text-lg sm:text-lg md:text-xl">Powered by</span>
               <img
                 src={acesLogo}
                 alt="ACES"
-                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
+                className="h-8 sm:h-8 md:h-10 w-auto object-contain"
               />
             </div>
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4 sm:mb-6 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto px-2">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4 sm:mb-6 max-w-xs sm:max-w-2xl md:max-w-3xl mx-auto px-2 hidden sm:block">
               Where Innovation Meets Collaboration. Build the Future in 15 Hours.
             </p>
             <PrizePoolCountUp />

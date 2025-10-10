@@ -9,7 +9,7 @@
 .gradient-hero { background: radial-gradient(1200px 600px at 50% 10%, rgba(120,119,198,.25), transparent 60%), radial-gradient(800px 400px at 10% 80%, rgba(236,72,153,.15), transparent 60%), radial-gradient(800px 400px at 90% 80%, rgba(59,130,246,.15), transparent 60%); }
 
 /* Accent headings for rules */
-.rules-heading { color: rgb(168 85 247); }
+.rules-heading { color: #4FC3F7; }
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -17,44 +17,47 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 10% 6%;
+    /* Dark midnight navy background with light foreground */
+    --background: 220 60% 4%; /* near-black navy */
     --foreground: 0 0% 98%;
 
-    --card: 240 8% 10%;
+    --card: 220 50% 7%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 8% 10%;
+    --popover: 220 50% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 280 80% 55%;
+    /* Electric blue primary and cyan secondary from poster */
+    --primary: 210 100% 55%; /* vivid electric blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 190 80% 50%;
+    --secondary: 190 95% 50%; /* bright cyan */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 6% 20%;
-    --muted-foreground: 240 5% 64%;
+    --muted: 220 25% 18%;
+    --muted-foreground: 220 10% 70%;
 
-    --accent: 280 80% 55%;
-    --accent-foreground: 0 0% 100%;
+    /* Gold accent for highlights like dates and callouts */
+    --accent: 46 100% 50%; /* golden yellow */
+    --accent-foreground: 230 80% 12%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 20%;
-    --input: 240 6% 20%;
-    --ring: 280 80% 55%;
+    --border: 218 30% 20%;
+    --input: 218 30% 20%;
+    --ring: 200 100% 60%;
 
     --radius: 0.75rem;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(280 80% 55%), hsl(190 80% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(280 80% 55% / 0.2), hsl(190 80% 50% / 0.2));
-    --gradient-card: linear-gradient(135deg, hsl(240 8% 12%), hsl(240 8% 8%));
+    /* Gradients aligned to poster glow (blue -> cyan) */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 55%), hsl(190 95% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 55% / 0.20), hsl(190 95% 50% / 0.20));
+    --gradient-card: linear-gradient(135deg, hsl(220 45% 10%), hsl(220 55% 6%));
     
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(280 80% 55% / 0.3);
-    --shadow-card: 0 8px 32px hsl(240 10% 3% / 0.5);
+    /* Glows use blue/cyan instead of purple */
+    --shadow-glow: 0 0 40px hsl(200 100% 60% / 0.35);
+    --shadow-card: 0 8px 32px hsl(220 60% 3% / 0.55);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -101,9 +104,9 @@ All colors MUST be HSL.
   }
 
   .glass-effect {
-    background: hsl(240 8% 10% / 0.6);
+    background: hsl(220 40% 8% / 0.6);
     backdrop-filter: blur(12px);
-    border: 1px solid hsl(240 6% 20% / 0.5);
+    border: 1px solid hsl(218 30% 20% / 0.5);
   }
 
   .transition-smooth {
