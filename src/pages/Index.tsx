@@ -463,6 +463,7 @@ const Index = () => {
                 <li>Teams can submit only one abstract.</li>
                 <li>A student can be part of only one team.</li>
                 <li>Teams must follow the official PPT template provided for idea submission.</li>
+                <li>Download the ACES App, register your team there, and fill out all necessary details. Upload a screenshot of your registration confirmation on the portal. Failing to do so will result in an incomplete registration and will not be accepted.</li>
                 <li>The registration window will be open from 9th October 2025 to 27th October 2025, and no entries or submissions will be accepted after the deadline under any circumstances.</li>
               </ul>
             </div>
