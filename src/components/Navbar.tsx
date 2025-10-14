@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import mjLogo from "@/assets/mj.png";
 import iicLogo from "@/assets/iic_logo.png";
 import ouLogo from "@/assets/ou_logo.png";
@@ -9,9 +10,46 @@ import naacLogo from "@/assets/naac logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const location = useLocation();
 
-  const isActive = (path: string) => location.pathname === path;
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+
+      // Detect active section
+      const sections = ["home", "themes", "timeline", "rules", "history", "contact"];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(`/#${section}`);
+            break;
+          }
+        }
+      }
+
+      // If at top, set home as active
+      if (window.scrollY < 100) {
+        setActiveSection("/");
+      }
+    };
+
+    handleScroll(); // Initial check
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return location.pathname === "/" && activeSection === "/";
+    }
+    return activeSection === path || location.pathname === path;
+  };
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -23,77 +61,208 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-effect border-b border-border overflow-x-hidden">
-      <div className="w-full px-2 sm:px-4">
-        <div className="flex items-center h-20 sm:h-24 md:h-28">
-          <Link to="/#home" className="flex items-center mr-auto">
-            <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3">
-              <img src={mjLogo} alt="MJCET" className="h-10 sm:h-12 md:h-16 w-auto object-contain" />
-              <img src={iicLogo} alt="IIC" className="h-6 sm:h-8 md:h-10 w-auto object-contain" />
-              <img src={ouLogo} alt="Osmania University" className="h-6 sm:h-8 md:h-10 w-auto object-contain" />
-              <img src={naacLogo} alt="NAAC A+" className="h-6 sm:h-8 md:h-10 w-auto object-contain" />
-            </div>
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/98 backdrop-blur-2xl shadow-sm border-b border-border/60"
+          : "bg-background/90 backdrop-blur-md border-b border-border/40"
+      }`}
+    >
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex items-center justify-between h-16 lg:h-24">
+          
+          {/* Logo Section */}
+          <Link to="/#home">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4"
+            >
+              <img
+                src={mjLogo}
+                alt="MJCET"
+                className="h-10 sm:h-12 lg:h-14 w-auto object-contain"
+              />
+              <div className="h-8 w-px bg-border/90 hidden sm:block" />
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
+                <img
+                  src={iicLogo}
+                  alt="IIC"
+                  className="h-6 sm:h-7 lg:h-12 w-auto object-contain opacity-90"
+                />
+                <img
+                  src={ouLogo}
+                  alt="Osmania University"
+                  className="h-6 sm:h-7 lg:h-12 w-auto object-contain opacity-90"
+                />
+                <img
+                  src={naacLogo}
+                  alt="NAAC A+"
+                  className="h-6 sm:h-7 lg:h-12 w-auto object-contain opacity-90"
+                />
+              </div>
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-2 ml-auto">
+          <div className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <a key={link.path} href={link.path}>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-sm lg:text-lg px-2 lg:px-4 py-2 lg:py-3 text-muted-foreground hover:text-foreground hover:bg-muted transition-smooth"
+                <motion.div
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                 >
-                  {link.label}
-                </Button>
+                  <button
+                    // variant="ghost"
+                    // size="sm"
+                    className={`relative px-3 xl:px-4 py-1.5 text-lg font-medium transition-all duration-300 ${
+                      isActive(link.path)
+                        ? "text-secondary font-semibold"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                    {isActive(link.path) && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary rounded-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </button>
+                </motion.div>
               </a>
             ))}
-            <Link to="/Register">
-              <Button
-                size="sm"
-                className="ml-1 lg:ml-2 text-sm lg:text-lg px-4 lg:px-8 py-2 lg:py-3 gradient-primary hover:opacity-90 transition-smooth shadow-glow"
+            
+            <Link to="/Register" className="ml-3">
+              <motion.div
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                Register Now
-              </Button>
+                <Button
+                  size="sm"
+                  className="px-5 py-1.5 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300 shadow-sm"
+                >
+                  Register Now
+                  <motion.div
+                    className="ml-1.5 inline-block"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </motion.div>
+                </Button>
+              </motion.div>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground p-2"
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.15 }}
+            className="lg:hidden p-2 hover:bg-muted/50 rounded-lg transition-colors duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
-          </button>
+            <AnimatePresence mode="wait" initial={false}>
+              {isOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-5 w-5 text-secondary" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: -90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-5 w-5 text-secondary" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-3 sm:py-4 space-y-1 sm:space-y-2 animate-slide-up">
-            {navLinks.map((link) => (
-              <a key={link.path} href={link.path} onClick={() => setIsOpen(false)}>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-center text-sm sm:text-base text-muted-foreground hover:text-foreground transition-smooth"
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden overflow-hidden border-t border-border/40"
+            >
+              <div className="py-3 space-y-1">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: index * 0.05,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <a href={link.path} onClick={() => setIsOpen(false)}>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className={`w-full justify-start px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                          isActive(link.path)
+                            ? "text-secondary bg-secondary/10 font-semibold"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                        }`}
+                      >
+                        {link.label}
+                      </Button>
+                    </a>
+                  </motion.div>
+                ))}
+                
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: navLinks.length * 0.05,
+                    ease: "easeOut",
+                  }}
+                  className="pt-2"
                 >
-                  {link.label}
-                </Button>
-              </a>
-            ))}
-            <Link to="/Register" onClick={() => setIsOpen(false)}>
-              <Button
-                size="sm"
-                className="w-full text-sm sm:text-base gradient-primary hover:opacity-90 transition-smooth shadow-glow"
-              >
-                Register Now
-              </Button>
-            </Link>
-          </div>
-        )}
+                  <Link to="/Register" onClick={() => setIsOpen(false)}>
+                    <Button
+                      size="sm"
+                      className="w-full py-2 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300"
+                    >
+                      Register Now
+                      <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                    </Button>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

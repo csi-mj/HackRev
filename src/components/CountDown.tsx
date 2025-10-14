@@ -46,17 +46,17 @@ const CountDown = ({ targetDate }: CountDownProps) => {
   ];
 
   return (
-    <div className="flex justify-center gap-1 sm:gap-3 md:gap-4 lg:gap-6">
+    <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 w-full">
       {timeUnits.map((unit, index) => (
         <Card
           key={unit.label}
-          className="glass-effect shadow-glow p-2 sm:p-4 md:p-6 lg:p-8 min-w-[70px] sm:min-w-[80px] md:min-w-[120px] lg:min-w-[140px] text-center transition-smooth hover:scale-105 animate-slide-up"
+          className="glass-effect p-4 sm:p-4 md:p-5 lg:p-6 flex-1 min-w-[70px] max-w-[95px] sm:max-w-[110px] md:max-w-[140px] lg:max-w-[160px] text-center transition-all duration-300 hover:scale-105 hover:border-secondary/40 border border-border/30 animate-slide-up"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
-          <div className="text-lg sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent animate-pulse-glow">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-heading font-bold bg-gradient-to-br from-secondary to-secondary bg-clip-text text-transparent leading-tight">
             {unit.value.toString().padStart(2, "0")}
           </div>
-          <div className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground mt-1 sm:mt-2 font-heading uppercase tracking-wider">
+          <div className="text-[10px] sm:text-xs md:text-sm lg:text-base text-muted-foreground mt-1 sm:mt-2 font-medium uppercase tracking-wide">
             {unit.label}
           </div>
         </Card>

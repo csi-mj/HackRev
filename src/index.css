@@ -15,6 +15,18 @@
 All colors MUST be HSL.
 */
 
+  .scroll-hide {
+            /* For Firefox */
+            scrollbar-width: none;
+            /* For Internet Explorer and Edge */
+            -ms-overflow-style: none;
+        }
+
+        /* For Webkit browsers (Chrome, Safari) */
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+
 @layer base {
   :root {
     --background: 240 10% 6%;
@@ -29,7 +41,7 @@ All colors MUST be HSL.
     --primary: 280 80% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 190 80% 50%;
+    --secondary: 200 90% 50%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 240 6% 20%;
@@ -43,13 +55,13 @@ All colors MUST be HSL.
 
     --border: 240 6% 20%;
     --input: 240 6% 20%;
-    --ring: 280 80% 55%;
+    --ring: 210 80% 50%;
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(280 80% 55%), hsl(190 80% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(280 80% 55% / 0.2), hsl(190 80% 50% / 0.2));
+    --gradient-primary: linear-gradient(135deg, hsl(280 80% 55%), hsl(210 80% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(280 80% 55% / 0.2), hsl(210 80% 50% / 0.2));
     --gradient-card: linear-gradient(135deg, hsl(240 8% 12%), hsl(240 8% 8%));
     
     /* Shadows */

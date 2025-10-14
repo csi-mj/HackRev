@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -50,33 +52,51 @@ const faqs = [
 
 const Faq = () => {
   return (
-    <section className="py-20 px-4">
+    <section className="py-16 sm:py-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-muted-foreground text-lg">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <HelpCircle className="w-7 h-7 sm:w-8 sm:h-8 text-secondary" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold bg-gradient-to-r from-secondary via-secondary to-secondary bg-clip-text text-transparent">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <p className="text-muted-foreground text-base sm:text-lg">
             Got questions? We've got answers!
           </p>
-        </div>
+        </motion.div>
 
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem
+            <motion.div
               key={index}
-              value={`item-${index}`}
-              className="glass-effect rounded-lg border border-border overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-100px" }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
             >
-              <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/50 transition-smooth">
-                <span className="text-left font-heading font-semibold">
-                  {faq.question}
-                </span>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-4 text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem
+                value={`item-${index}`}
+                className="glass-effect rounded-lg border border-border/50 hover:border-secondary/40 overflow-hidden backdrop-blur-xl transition-all duration-300 group relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                
+                <AccordionTrigger className="px-4 sm:px-6 py-4 hover:no-underline transition-all duration-300 relative z-10">
+                  <span className="text-left font-heading font-semibold text-sm sm:text-base">
+                    {faq.question}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="px-4 sm:px-6 pb-4 text-muted-foreground text-sm sm:text-base relative z-10">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           ))}
         </Accordion>
       </div>
