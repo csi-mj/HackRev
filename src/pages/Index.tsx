@@ -935,11 +935,7 @@ const Index = () => {
                       idea submission.
                     </li>
                     <li>
-                      Download the ACES App, register your team there, and fill
-                      out all necessary details. Upload a screenshot of your
-                      registration confirmation on the portal. Failing to do so
-                      will result in an incomplete registration and will not be
-                      accepted.
+                    All team members must download the ACES HUB app, log in, and navigate to the Profile section. After logging in, capture a screenshot of the Profile screen for each member, compile all screenshots into a single consolidated PDF, and upload this PDF on the website while completing the Hackathon registration.
                     </li>
                     <li>
                       The registration window will be open from 9th October 2025
@@ -1016,7 +1012,7 @@ const Index = () => {
                     </li>
                     <li>
                       A maximum of 15 teams will be shortlisted per track, with
-                      5 teams on the waitlist.
+                      3 teams on the waitlist.
                     </li>
                     <li>
                       Shortlisted teams will be informed via email and must
