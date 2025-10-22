@@ -710,6 +710,14 @@ const RegisterTrack = () => {
                               >
                                 Apple App Store
                               </a>
+                              <a
+                                href="/public/Demo_PDF.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-smooth text-sm"
+                              >
+                                Demo PDF
+                              </a>
                             </div>
                           </div>
                         </DialogContent>
