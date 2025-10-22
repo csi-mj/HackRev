@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Subtle global polish */
+.glass-effect { backdrop-filter: blur(10px); background: rgba(255,255,255,0.02); }
+.shadow-glow { box-shadow: 0 10px 30px rgba(120, 119, 198, 0.25), 0 0 0 1px rgba(120,119,198,0.15) inset; }
+.transition-smooth { transition: all 200ms ease; }
+.gradient-hero { background: radial-gradient(1200px 600px at 50% 10%, rgba(120,119,198,.25), transparent 60%), radial-gradient(800px 400px at 10% 80%, rgba(236,72,153,.15), transparent 60%), radial-gradient(800px 400px at 90% 80%, rgba(59,130,246,.15), transparent 60%); }
+
+/* Accent headings for rules */
+.rules-heading { color: rgb(168 85 247); }
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+  .scroll-hide {
+            /* For Firefox */
+            scrollbar-width: none;
+            /* For Internet Explorer and Edge */
+            -ms-overflow-style: none;
+        }
+
+        /* For Webkit browsers (Chrome, Safari) */
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+@layer base {
+  :root {
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 8% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 8% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 280 80% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 90% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 6% 20%;
+    --muted-foreground: 240 5% 64%;
+
+    --accent: 280 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 210 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280 80% 55%), hsl(210 80% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(280 80% 55% / 0.2), hsl(210 80% 50% / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(240 8% 12%), hsl(240 8% 8%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(280 80% 55% / 0.3);
+    --shadow-card: 0 8px 32px hsl(240 10% 3% / 0.5);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-effect {
+    background: hsl(240 8% 10% / 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(240 6% 20% / 0.5);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  /* Prevent fixed navbar from covering section headings when navigating via anchors */
+  .anchor-offset {
+    scroll-margin-top: 5rem; /* approx navbar height for mobile (h-20) */
+  }
+  
+  @media (min-width: 640px) {
+    .anchor-offset {
+      scroll-margin-top: 6rem; /* approx navbar height for sm (h-24) */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .anchor-offset {
+      scroll-margin-top: 7rem; /* approx navbar height for md+ (h-28) */
+    }
+  }
+
+  /* Responsive text scaling */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+  
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  .text-responsive-3xl {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+
+  /* Responsive spacing */
+  .space-responsive-sm {
+    @apply space-y-2 sm:space-y-3;
+  }
+  
+  .space-responsive-md {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .space-responsive-lg {
+    @apply space-y-6 sm:space-y-8 md:space-y-12;
+  }
+
+  /* Responsive padding */
+  .p-responsive {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+  
+  .px-responsive {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .py-responsive {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+  }
+}
