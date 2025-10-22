@@ -48,7 +48,7 @@ import { PixelImage } from "@/components/ui/pixel-image";
 
 const Index = () => {
   // Countdown target date: 27 October 2025
-  const targetDate = new Date("2025-10-27T00:00:00");
+  const targetDate = new Date("2025-10-28T00:00:00");
 
   // State for problem statements dialog
   const [selectedTrack, setSelectedTrack] = useState<(typeof tracks)[0] | null>(
