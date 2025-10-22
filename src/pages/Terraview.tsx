@@ -18,7 +18,7 @@ import {
   Building2
 } from "lucide-react";
 import Squares from "@/components/Squares";
-import terraviewPoster from "@/assets/Terraview.jpeg";
+import terraviewPoster from "@/assets/terraview2.jpg";
 import csiLogo from "@/assets/csi_logo.png";
 import ecellLogo from "@/assets/ecell_logo.png";
 import acesLogo from "@/assets/aces.png";
