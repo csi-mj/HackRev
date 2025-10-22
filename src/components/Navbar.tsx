@@ -110,35 +110,61 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
-              <a key={link.path} href={link.path}>
-                <motion.div
-                  whileHover={{ y: -1 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
+              <motion.div
+                key={link.path}
+                whileHover={{ y: -1 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                <button
+                  onClick={() => {
+                    if (link.path === "/") {
+                      // Navigate to home page and scroll to top
+                      if (location.pathname !== "/") {
+                        window.location.href = "/";
+                      } else {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    } else {
+                      const targetId = link.path.replace("/#", "");
+                      console.log("Desktop - Looking for element with ID:", targetId);
+                      const element = document.getElementById(targetId);
+                      console.log("Desktop - Found element:", element);
+                      if (element) {
+                        // Element exists on current page, scroll to it
+                        const navbarHeight = 80;
+                        const elementPosition = element.offsetTop - navbarHeight;
+                        console.log("Desktop - Scrolling to position:", elementPosition);
+                        window.scrollTo({
+                          top: elementPosition,
+                          behavior: "smooth"
+                        });
+                      } else {
+                        // Element doesn't exist, navigate to home page with hash
+                        console.log("Desktop - Element not found, navigating to home page");
+                        window.location.href = link.path;
+                      }
+                    }
+                  }}
+                  className={`relative px-3 xl:px-4 py-1.5 text-lg font-medium transition-all duration-300 ${
+                    isActive(link.path)
+                      ? "text-secondary font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  <button
-                    // variant="ghost"
-                    // size="sm"
-                    className={`relative px-3 xl:px-4 py-1.5 text-lg font-medium transition-all duration-300 ${
-                      isActive(link.path)
-                        ? "text-secondary font-semibold"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {link.label}
-                    {isActive(link.path) && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary rounded-full"
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </button>
-                </motion.div>
-              </a>
+                  {link.label}
+                  {isActive(link.path) && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary rounded-full"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+                </button>
+              </motion.div>
             ))}
             
             <Link to="/Register" className="ml-3">
@@ -221,19 +247,48 @@ const Navbar = () => {
                       ease: "easeOut",
                     }}
                   >
-                    <a href={link.path} onClick={() => setIsOpen(false)}>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className={`w-full justify-start px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                          isActive(link.path)
-                            ? "text-secondary bg-secondary/10 font-semibold"
-                            : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
-                        }`}
-                      >
-                        {link.label}
-                      </Button>
-                    </a>
+                    <button
+                      onClick={() => {
+                        setIsOpen(false);
+                        // Small delay to ensure menu closes before scrolling
+                        setTimeout(() => {
+                          if (link.path === "/") {
+                            // Navigate to home page and scroll to top
+                            if (location.pathname !== "/") {
+                              window.location.href = "/";
+                            } else {
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }
+                          } else {
+                            const targetId = link.path.replace("/#", "");
+                            console.log("Mobile - Looking for element with ID:", targetId);
+                            const element = document.getElementById(targetId);
+                            console.log("Mobile - Found element:", element);
+                            if (element) {
+                              // Element exists on current page, scroll to it
+                              const navbarHeight = 80;
+                              const elementPosition = element.offsetTop - navbarHeight;
+                              console.log("Mobile - Scrolling to position:", elementPosition);
+                              window.scrollTo({
+                                top: elementPosition,
+                                behavior: "smooth"
+                              });
+                            } else {
+                              // Element doesn't exist, navigate to home page with hash
+                              console.log("Mobile - Element not found, navigating to home page");
+                              window.location.href = link.path;
+                            }
+                          }
+                        }, 100);
+                      }}
+                      className={`w-full justify-start px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
+                        isActive(link.path)
+                          ? "text-secondary bg-secondary/10 font-semibold"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                      }`}
+                    >
+                      {link.label}
+                    </button>
                   </motion.div>
                 ))}
                 
