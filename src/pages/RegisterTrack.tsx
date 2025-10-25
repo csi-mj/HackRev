@@ -154,6 +154,17 @@ const RegisterTrack = () => {
       }
     }
 
+    // Validate PPT file upload
+    const abstractFile = form.get("abstract") as File | null;
+    if (!abstractFile || abstractFile.size === 0) {
+      toast({
+        title: "Missing PPT file",
+        description: "Please upload your PPT abstract file.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Validate problem statement selection
     if (!selectedProblemStatement.trim()) {
       toast({
@@ -163,8 +174,18 @@ const RegisterTrack = () => {
       return;
     }
 
-    // Validate team member fields based on team size (leader is separate)
+    // Validate team size (minimum 4 members required)
     const sizeNum = Number(form.get("teamSize") || 0);
+    if (sizeNum < 4) {
+      toast({
+        title: "Invalid team size",
+        description: "Minimum 4 team members are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate team member fields based on team size (leader is separate)
     const membersNeeded = Math.max(0, sizeNum - 1);
     for (let i = 1; i <= membersNeeded; i++) {
       const name = String(form.get(`member${i}`) || "").trim();
@@ -173,6 +194,7 @@ const RegisterTrack = () => {
         toast({
           title: "Missing member details",
           description: `Please fill Member ${i} name and roll number.`,
+          variant: "destructive",
         });
         return;
       }
@@ -358,7 +380,7 @@ const RegisterTrack = () => {
                         htmlFor="teamSize"
                         className="text-foreground font-medium"
                       >
-                        Team Size
+                        Team Size (Minimum 4) *
                       </Label>
                       <Select
                         name="teamSize"
@@ -366,7 +388,7 @@ const RegisterTrack = () => {
                         onValueChange={(v) => setTeamSize(Number(v))}
                       >
                         <SelectTrigger id="teamSize" className="mt-1.5">
-                          <SelectValue placeholder="Select (4-6)" />
+                          <SelectValue placeholder="Select team size (4-6 members)" />
                         </SelectTrigger>
                         <SelectContent className="p-1">
                           <SelectItem value="4">4</SelectItem>
@@ -727,13 +749,14 @@ const RegisterTrack = () => {
                         htmlFor="abstract"
                         className="text-foreground font-medium"
                       >
-                        Submission of Abstract (PPT)
+                        Submission of Abstract (PPT) *
                       </Label>
                       <Input
                         id="abstract"
                         name="abstract"
                         type="file"
                         accept=".ppt,.pptx"
+                        required
                         className="mt-1.5 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-secondary file:text-secondary-foreground hover:file:bg-secondary/90 file:cursor-pointer cursor-pointer"
                       />
                     </div>
