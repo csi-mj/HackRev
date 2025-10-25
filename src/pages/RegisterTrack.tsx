@@ -165,6 +165,45 @@ const RegisterTrack = () => {
       return;
     }
 
+    // Check for duplicate email registration across ALL tracks
+    const leaderEmail = String(form.get("email") || "").trim();
+    try {
+      // Check all track tables for existing registrations with the same email
+      const allTracks: TrackKey[] = ["urban-tech", "hardware", "agro-tech", "education"];
+      let existingRegistration = null;
+      
+      for (const trackKey of allTracks) {
+        const { data: existingRegistrations, error: checkError } = await supabase
+          .from(tableByTrack[trackKey])
+          .select("leader_email, team_name, track")
+          .eq("leader_email", leaderEmail);
+        
+        if (checkError) {
+          console.error(`Error checking duplicate email in ${trackKey}:`, checkError);
+        } else if (existingRegistrations && existingRegistrations.length > 0) {
+          existingRegistration = existingRegistrations[0];
+          break; // Found existing registration, no need to check other tracks
+        }
+      }
+      
+      if (existingRegistration) {
+        toast({
+          title: "Email already registered",
+          description: `This email address has already been used to register team "${existingRegistration.team_name}" in the ${existingRegistration.track} track. Each team lead can only register once across all tracks.`,
+          variant: "destructive",
+        });
+        return;
+      }
+    } catch (error) {
+      console.error("Error checking duplicate email:", error);
+      toast({
+        title: "Registration check failed",
+        description: "Unable to verify email. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Validate problem statement selection
     if (!selectedProblemStatement.trim()) {
       toast({
