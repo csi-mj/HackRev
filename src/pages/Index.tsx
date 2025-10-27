@@ -49,7 +49,7 @@ import { PixelImage } from "@/components/ui/pixel-image";
 
 const Index = () => {
   // Countdown target date: 27 October 2025
-  const targetDate = new Date("2025-10-28T00:00:00");
+  const targetDate = new Date("2025-10-28T12:00:00");
 
   // State for problem statements dialog
   const [selectedTrack, setSelectedTrack] = useState<(typeof tracks)[0] | null>(
@@ -247,10 +247,12 @@ const Index = () => {
                 transition={{ duration: 0.5 }}
                 className="mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
               >
-                <Alert className="border-green-500/50 bg-green-500/10">
-                  <AlertDescription className="text-sm sm:text-base text-green-600 dark:text-green-400 font-medium">
-                    <span className="inline-block sm:inline">✅ <strong>Problem Resolved.</strong></span>{" "}
-                    <span className="inline-block sm:inline mt-1 sm:mt-0">You can continue registering.</span>
+                <Alert className="border-blue-500/50 bg-blue-500/10">
+                  <AlertDescription className="text-sm sm:text-base text-blue-600 dark:text-blue-400 font-medium">
+                    <div className="flex flex-col">
+                      <span>📢 <strong>Deadline Extended!</strong></span>
+                      <span className="mt-1">Registration now closes on 28th October at 12 PM (noon).</span>
+                    </div>
                   </AlertDescription>
                 </Alert>
               </motion.div>
