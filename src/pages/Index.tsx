@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import CountDown from "@/components/CountDown";
 import {
   Users,
@@ -239,6 +240,20 @@ const Index = () => {
         <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto text-center px-4 sm:px-6">
             <div className="max-w-5xl mx-auto animate-slide-up">
+              {/* ACES HUB Notice */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
+              >
+                <Alert className="border-yellow-500/50 bg-yellow-500/10">
+                  <AlertDescription className="text-sm sm:text-base text-yellow-600 dark:text-yellow-400 font-medium">
+                    ℹ️ <strong>Notice:</strong> ACES HUB team is fixing the bug. Please try registering again by 9 PM.
+                  </AlertDescription>
+                </Alert>
+              </motion.div>
+
               {/* Main Heading */}
               {/* <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold mb-4 sm:mb-5 leading-tight tracking-tight"> */}
               {/* <TextGenerateEffect words="Hack Revolution" /> */}
