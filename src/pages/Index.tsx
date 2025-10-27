@@ -247,9 +247,10 @@ const Index = () => {
                 transition={{ duration: 0.5 }}
                 className="mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
               >
-                <Alert className="border-yellow-500/50 bg-yellow-500/10">
-                  <AlertDescription className="text-sm sm:text-base text-yellow-600 dark:text-yellow-400 font-medium">
-                    ℹ️ <strong>Notice:</strong> ACES HUB team is fixing the bug. Please try registering again by 9 PM.
+                <Alert className="border-green-500/50 bg-green-500/10">
+                  <AlertDescription className="text-sm sm:text-base text-green-600 dark:text-green-400 font-medium">
+                    <span className="inline-block sm:inline">✅ <strong>Problem Resolved.</strong></span>{" "}
+                    <span className="inline-block sm:inline mt-1 sm:mt-0">You can continue registering.</span>
                   </AlertDescription>
                 </Alert>
               </motion.div>
