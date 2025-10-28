@@ -241,7 +241,7 @@ const Index = () => {
           <div className="container mx-auto text-center px-4 sm:px-6">
             <div className="max-w-5xl mx-auto animate-slide-up">
               {/* ACES HUB Notice */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -255,7 +255,7 @@ const Index = () => {
                     </div>
                   </AlertDescription>
                 </Alert>
-              </motion.div>
+              </motion.div> */}
 
               {/* Main Heading */}
               {/* <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-extrabold mb-4 sm:mb-5 leading-tight tracking-tight"> */}
@@ -320,21 +320,20 @@ const Index = () => {
 
               {/* CTA Button */}
               <div className="flex justify-center mb-10 sm:mb-12 px-4">
-                <Link to="/Register" className="w-full sm:w-auto">
-                  <Button
-                    size="lg"
-                    title="Register Now"
-                    className="w-full sm:w-auto text-base sm:text-lg font-semibold px-8 sm:px-10 py-5 sm:py-6 rounded-2xl bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 transition-all duration-300  hover:scale-105 transform"
-                  >
-                    Register Now
-                  </Button>
-                </Link>
+                <Button
+                  size="lg"
+                  disabled
+                  title="Registrations Closed"
+                  className="w-full sm:w-auto text-base sm:text-lg font-semibold px-8 sm:px-10 py-5 sm:py-6 rounded-2xl bg-muted text-muted-foreground cursor-not-allowed"
+                >
+                  Registrations Closed
+                </Button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Countdown */}
+        {/* Registrations Closed Message */}
         <section id="home" className="py-0 px-3 sm:px-6 lg:px-8 anchor-offset">
           <div className="w-full mx-auto">
             <motion.div
@@ -342,40 +341,17 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ margin: "-100px" }}
               transition={{ duration: 0.9, ease: "easeOut" }}
-              className="glass-effect rounded-2xl p-5 sm:p-8 md:p-10 max-w-5xl mx-auto border border-secondary/20 backdrop-blur-xl hover:border-secondary/40 transition-colors duration-300"
+              className="glass-effect rounded-2xl p-5 sm:p-8 md:p-10 max-w-5xl mx-auto border border-secondary/20 backdrop-blur-xl"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                // viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center justify-center gap-3 mb-6"
-              >
-                <motion.div
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 5, -5, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatDelay: 1,
-                  }}
-                >
-                  <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-secondary" />
-                </motion.div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-center bg-secondary bg-clip-text text-transparent">
-                  Registration Closes In
+              <div className="flex items-center justify-center gap-3 mb-2">
+                <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-muted-foreground" />
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-center text-muted-foreground">
+                  Registrations Closed
                 </h2>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <CountDown targetDate={targetDate} />
-              </motion.div>
+              </div>
+              <p className="text-center text-muted-foreground/80 text-sm sm:text-base">
+                Thank you for your interest. Stay tuned for future events!
+              </p>
             </motion.div>
           </div>
         </section>

@@ -827,11 +827,11 @@ const RegisterTrack = () => {
 
                   <div className="flex flex-col sm:flex-row items-center gap-3">
                     <Button
-                      type="submit"
-                      disabled={submitting}
-                      className="w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 text-secondary-foreground transition-all duration-300 font-semibold"
+                      type="button"
+                      disabled
+                      className="w-full sm:w-auto bg-muted text-muted-foreground cursor-not-allowed"
                     >
-                      {submitting ? "Submitting..." : "Register Now"}
+                      Registrations Closed
                     </Button>
                     <Link to="/Register" className="w-full sm:w-auto">
                       <Button

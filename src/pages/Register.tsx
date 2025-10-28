@@ -195,15 +195,13 @@ const Register = () => {
                         </DialogContent>
                       </Dialog>
                     )}
-                    <Link to={track.link} className="w-full">
-                      <Button
-                        size="sm"
-                        className="w-full bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 text-secondary-foreground transition-all duration-300 text-xs sm:text-sm font-semibold hover:scale-[1.01]"
-                      >
-                        <Trophy className="w-4 h-4 mr-2" />
-                        Register for This Track
-                      </Button>
-                    </Link>
+                    <Button
+                      size="sm"
+                      disabled
+                      className="w-full bg-muted text-muted-foreground cursor-not-allowed"
+                    >
+                      Registrations Closed
+                    </Button>
                   </div>
                 </Card>
               </motion.div>

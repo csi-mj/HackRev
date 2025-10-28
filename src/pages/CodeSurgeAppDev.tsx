@@ -105,11 +105,9 @@ const CodeSurgeAppDev = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Link to="/Register">
-                <Button size="lg" className="bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 text-secondary-foreground transition-all duration-300 hover:scale-105 transform shadow-lg text-lg px-8 py-6">
-                  Register Now
-                </Button>
-              </Link>
+              <Button size="lg" disabled className="bg-muted text-muted-foreground cursor-not-allowed text-lg px-8 py-6">
+                Registrations Closed
+              </Button>
             </motion.div>
           </motion.div>
 
@@ -256,11 +254,9 @@ const CodeSurgeAppDev = () => {
                 <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                   Don't miss this opportunity to showcase your skills, learn from the best, and win amazing prizes!
                 </p>
-                <Link to="/Register">
-                  <Button size="lg" className="bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 text-secondary-foreground transition-all duration-300 hover:scale-105 transform shadow-lg text-base sm:text-lg px-10 sm:px-12 py-6">
-                    Register Now
-                  </Button>
-                </Link>
+                <Button size="lg" disabled className="bg-muted text-muted-foreground cursor-not-allowed text-base sm:text-lg px-10 sm:px-12 py-6">
+                  Registrations Closed
+                </Button>
               </div>
             </Card>
           </motion.div>

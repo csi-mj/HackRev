@@ -167,28 +167,20 @@ const Navbar = () => {
               </motion.div>
             ))}
             
-            <Link to="/Register" className="ml-3">
+            <div className="ml-3">
               <motion.div
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.0, y: 0 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
                 <Button
                   size="sm"
-                  className="px-5 py-1.5 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300 shadow-sm"
+                  disabled
+                  className="px-5 py-1.5 text-sm font-medium bg-muted text-muted-foreground cursor-not-allowed"
                 >
-                  Register Now
-                  <motion.div
-                    className="ml-1.5 inline-block"
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 2 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </motion.div>
+                  Registrations Closed
                 </Button>
               </motion.div>
-            </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -302,15 +294,13 @@ const Navbar = () => {
                   }}
                   className="pt-2"
                 >
-                  <Link to="/Register" onClick={() => setIsOpen(false)}>
-                    <Button
-                      size="sm"
-                      className="w-full py-2 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300"
-                    >
-                      Register Now
-                      <ArrowRight className="ml-2 h-3.5 w-3.5" />
-                    </Button>
-                  </Link>
+                  <Button
+                    size="sm"
+                    disabled
+                    className="w-full py-2 text-sm font-medium bg-muted text-muted-foreground cursor-not-allowed"
+                  >
+                    Registrations Closed
+                  </Button>
                 </motion.div>
               </div>
             </motion.div>
