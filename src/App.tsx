@@ -7,8 +7,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import Register from "./pages/Register";
-import CodeSurgeAppDev from "./pages/CodeSurgeAppDev";
-import Result from "./pages/Result";
 import RegisterTrack from "./pages/RegisterTrack";
 import RegistrationSuccess from "./pages/RegistrationSuccess";
 import Terraview from "./pages/Terraview";
@@ -30,8 +28,6 @@ const App = () => (
               <Route path="/Register" element={<Register />} />
               <Route path="/Register/:track" element={<RegisterTrack />} />
               <Route path="/registration-success" element={<RegistrationSuccess />} />
-              <Route path="/CodeSurgeAppDev" element={<CodeSurgeAppDev />} />
-              <Route path="/result" element={<Result />} />
               <Route path="/Terraview" element={<Terraview />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

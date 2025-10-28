@@ -350,7 +350,7 @@ const Index = () => {
                 </h2>
               </div>
               <p className="text-center text-muted-foreground/80 text-sm sm:text-base">
-                Thank you for your interest. Stay tuned for future events!
+              Thank you for your participation! Stay tuned for the results!
               </p>
             </motion.div>
           </div>
