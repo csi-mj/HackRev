@@ -49,6 +49,7 @@ import { PixelImage } from "@/components/ui/pixel-image";
 
 const Index = () => {
   // Countdown target date: 27 October 2025
+  // const targetDate = new Date("2025-11-03T00:00:00");
   const targetDate = new Date("2025-11-03T00:00:00");
 
   // State for problem statements dialog
@@ -353,7 +354,7 @@ const Index = () => {
                 Register now for the Terraview Track! Deadline: November 2nd, 2025
               </p>
               <div className="flex justify-center">
-                <CountDown targetDate={new Date("2025-11-2T23:59:59")} />
+                <CountDown targetDate={targetDate} />
               </div>
               <div className="flex justify-center mt-6">
                 <Link to="/Terraview">
@@ -479,15 +480,15 @@ const Index = () => {
                             </DialogContent>
                           </Dialog>
                         )}
-                        <Link to={track.link} className="w-full">
-                          <Button
-                            size="sm"
-                            className="w-full bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary/80 text-secondary-foreground transition-all duration-300 text-xs sm:text-sm font-semibold hover:scale-[1.01]"
-                          >
-                            <Trophy className="w-4 h-4 mr-2" />
-                            Register for This Track
-                          </Button>
-                        </Link>
+                        {/* <Link to={track.link} className="w-full"> */}
+                        <Button
+                      size="sm"
+                      disabled
+                      className="w-full bg-muted text-muted-foreground cursor-not-allowed"
+                    >
+                      Registrations Closed
+                    </Button>
+                        {/* </Link> */}
                       </div>
                     </div>
                   </Card>
