@@ -66,181 +66,216 @@ const Terraview = () => {
                 Exclusive for 1st Year Students
               </div>
             </div>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Data Analytics track for first-year students using Terraview software
             </p>
+            <Link to="/Terraview_registration" className="inline-block">
+              <Button className="px-8 py-6 text-lg sm:text-xl font-bold bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-secondary-foreground transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-secondary/50">
+                Register Now
+              </Button>
+            </Link>
           </motion.div>
 
-          {/* Poster Section */}
+          {/* Removed Poster Section */}
+
+          {/* New Details Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="mb-12 sm:mb-16"
           >
             <Card className="glass-effect p-6 sm:p-8 md:p-10 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <div className="relative z-10 text-center">
-                <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-6 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Event Poster</h2>
-                <div className="flex justify-center">
-                  <img 
-                    src={terraviewPoster} 
-                    alt="Terraview Track Poster" 
-                    className="max-w-full h-auto rounded-xl shadow-lg border border-border/50 group-hover:scale-[1.02] transition-transform duration-300"
-                  />
+              <div className="relative z-10">
+                <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-6 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Hack Revolution 2025: Data Analytics Using Terraview</h2>
+                <div className="space-y-3 text-sm sm:text-base">
+                  <div className="flex items-start gap-3"><Calendar className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Date:</span> Saturday, Nov 8, 2025</div></div>
+                  <div className="flex items-start gap-3"><Clock className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Time:</span> 10:30 AM – 1:00 PM</div></div>
+                  <div className="flex items-start gap-3"><MapPin className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Venue:</span> Seminar Hall, Block 4, Muffakham Jah College of Engineering and Technology</div></div>
+                  <div className="flex items-start gap-3"><Users className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Organized By:</span> E-Cell & CSI</div></div>
+                  <div className="flex items-start gap-3"><Building2 className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Powered By:</span> ACES</div></div>
+                  <div className="flex items-start gap-3"><GraduationCap className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Open To:</span> First-Year Students Only</div></div>
+                  <div className="flex items-start gap-3"><Trophy className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Prize Pool:</span> ₹30,000</div></div>
                 </div>
               </div>
             </Card>
           </motion.div>
 
-          {/* Event Details */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ margin: "-100px" }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden h-full">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                <div className="relative z-10">
-                  <h2 className="text-xl sm:text-2xl font-heading font-bold mb-6 flex items-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
-                    <Calendar className="h-5 w-5 sm:h-6 sm:w-6 mr-3 text-secondary" />
-                    Event Details
-                  </h2>
-                  <div className="space-y-4 text-sm sm:text-base">
-                    <div className="flex items-start gap-3">
-                      <Calendar className="h-5 w-5 text-secondary mt-0.5" />
-                      <div><span className="font-semibold text-foreground">Date:</span> <span className="text-muted-foreground">Saturday, November 8, 2025</span></div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Clock className="h-5 w-5 text-secondary mt-0.5" />
-                      <div><span className="font-semibold text-foreground">Time:</span> <span className="text-muted-foreground">10:30 AM – 1:00 PM</span></div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-secondary mt-0.5" />
-                      <div><span className="font-semibold text-foreground">Venue:</span> <span className="text-muted-foreground">Seminar Hall, Block 4, Muffakham Jah College of Engineering and Technology</span></div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Users className="h-5 w-5 text-secondary mt-0.5" />
-                      <div><span className="font-semibold text-foreground">Organized By:</span> <span className="text-muted-foreground">E-Cell & CSI</span></div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Trophy className="h-5 w-5 text-secondary mt-0.5" />
-                      <div><span className="font-semibold text-foreground">Prize Pool:</span> <span className="text-secondary font-bold">₹30,000</span></div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ margin: "-100px" }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden h-full">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                <div className="relative z-10">
-                  <h2 className="text-xl sm:text-2xl font-heading font-bold mb-6 flex items-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
-                    <Database className="h-5 w-5 sm:h-6 sm:w-6 mr-3 text-secondary" />
-                    Track Overview
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-6 text-sm sm:text-base">
-                    The Data Analytics Using Terraview track introduces first-year students to the exciting field of data analysis using the Terraview software. This beginner-friendly track is tailored for participants with minimal coding knowledge, offering them an opportunity to explore the fundamentals of data processing, analysis, and visualization.
-                  </p>
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-base sm:text-lg text-foreground">Participants will:</h3>
-                    <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary mt-1">•</span>
-                        Use datasets provided to create problem statements
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary mt-1">•</span>
-                        Perform analysis to uncover insights using Terraview
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary mt-1">•</span>
-                        Generate compelling visualizations in OWBX format
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary mt-1">•</span>
-                        Present work through PPTs, abstracts, and OWBX files
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-
-          {/* Guidelines */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Card className="glass-effect p-6 sm:p-8 md:p-10 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden mb-12 sm:mb-16">
+          {/* Track Overview & Guidelines */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ margin: "-100px" }} transition={{ duration: 0.5, delay: 0.2 }} className="mb-12 sm:mb-16">
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="relative z-10">
-                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-6 flex items-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 flex items-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
+                  <Database className="h-5 w-5 sm:h-6 sm:w-6 mr-3 text-secondary" />
+                  Track Overview
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-6 text-sm sm:text-base">
+                  The Data Analytics Using Terraview track introduces first-year students to the exciting field of data analysis using the Terraview software. This beginner-friendly track is tailored for participants with minimal coding knowledge, offering them an opportunity to explore the fundamentals of data processing, analysis, and visualization.
+                </p>
+                <h3 className="font-semibold text-base sm:text-lg mb-3">Participants will:</h3>
+                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base mb-6">
+                  <li>• Use datasets provided in the following drive link to create problem statements: <a className="text-secondary hover:underline" href="https://drive.google.com/drive/folders/1FErnI8Xo7MFYkri3Lmo34x39hFjJ2JAP" target="_blank" rel="noreferrer">Dataset Drive Link</a></li>
+                  <li>• Perform analysis to uncover insights and propose data-driven solutions using Terraview.</li>
+                  <li>• Generate compelling visualizations using Terraview and save them in OWBX format.</li>
+                  <li>• Present their work through a combination of PPTs, abstracts, and OWBX files.</li>
+                  <li>• Compress all required files, abstract and OWBX file into a .zip file and upload it for registration of the hackathon.</li>
+                </ul>
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 flex items-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
                   <FileText className="h-5 w-5 sm:h-6 sm:w-6 mr-3 text-secondary" />
                   Track Guidelines
                 </h2>
-                <div className="space-y-6">
+                <div className="space-y-6 text-sm sm:text-base">
                   <div>
-                    <h3 className="font-semibold text-base sm:text-lg mb-3 text-foreground">Eligibility:</h3>
-                    <p className="text-muted-foreground text-sm sm:text-base">Only first-year students are allowed to participate in this track.</p>
+                    <h3 className="font-semibold mb-2">Eligibility</h3>
+                    <p className="text-muted-foreground">Only first-year students are allowed to participate in this track.</p>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-base sm:text-lg mb-3 text-foreground">Team Composition:</h3>
-                    <p className="text-muted-foreground text-sm sm:text-base">This track is individual-based; no teams are allowed.</p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-base sm:text-lg mb-3 text-foreground">Evaluation Criteria:</h3>
-                    <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1">•</span> Innovation</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1">•</span> Insightfulness</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1">•</span> Practical Relevance</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1">•</span> Technical Execution</li>
+                    <h3 className="font-semibold mb-2">Project Requirements</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>Participants must perform data analysis using Terraview software.</li>
+                      <li>The analysis should focus on extracting insights, generating visualizations, and solving specific data-related problems.</li>
                     </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Abstract Submission</h3>
+                    <p className="text-muted-foreground">Participant must submit an abstract detailing:</p>
+                    <ul className="space-y-2 text-muted-foreground mt-2">
+                      <li>• The problem or dataset chosen for analysis.</li>
+                      <li>• The approach and methodology using Terraview.</li>
+                      <li>• The expected outcomes and insights.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Team Composition</h3>
+                    <p className="text-muted-foreground">This track is individual-based; no teams are allowed.</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Evaluation Criteria</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Innovation</li>
+                      <li>• Insightfulness</li>
+                      <li>• Practical Relevance</li>
+                      <li>• Technical Execution</li>
+                      <li>• Feature Utilization</li>
+                      <li>• Meaningful Insights</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Presentation Requirements</h3>
+                    <p className="text-muted-foreground">Participants must present their findings with clear documentation and visualizations during the event.</p>
                   </div>
                 </div>
               </div>
             </Card>
           </motion.div>
 
-          {/* Registration Notice */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ margin: "-100px" }} transition={{ duration: 0.5, delay: 0.25 }} className="mb-12 sm:mb-16">
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="relative z-10">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Focus Areas for Abstracts</h2>
+                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
+                  <li>• Dataset/problem definition.</li>
+                  <li>• Real-world relevance.</li>
+                  <li>• Methodology using Terraview.</li>
+                  <li>• Expected insights.</li>
+                  <li>• Creativity in visualization.</li>
+                </ul>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ margin: "-100px" }} transition={{ duration: 0.5, delay: 0.3 }} className="mb-12 sm:mb-16">
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="relative z-10">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Additional Information</h2>
+                <p className="text-muted-foreground mb-3">A detailed tutorial on how to use Terraview will be provided as part of the guidelines to assist participants in navigating the software effectively.</p>
+                <a href="https://www.youtube.com/playlist?list=PLrdKr6wzYfEJZjLLd8kRyjo7M1tmTFvEs" target="_blank" rel="noreferrer" className="text-secondary hover:underline">Terraview Tutorial Link</a>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ margin: "-100px" }} transition={{ duration: 0.5, delay: 0.35 }} className="mb-12 sm:mb-16">
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="relative z-10">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Key Dates to Remember</h2>
+                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
+                  <li>• Workshop: Oct 29th, 2025 (1:30pm - 4:30pm)</li>
+                  <li>• Registrations: Sun Oct 26, 2025 - Nov 5th, 2025</li>
+                  <li>• Event Date: Nov 8, 2025</li>
+                </ul>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ margin: "-100px" }} transition={{ duration: 0.5, delay: 0.4 }} className="mb-12 sm:mb-16">
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="relative z-10">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">How to Register Using the ACES Hub App</h2>
+                <ol className="list-decimal list-inside space-y-2 text-muted-foreground text-sm sm:text-base">
+                  <li><span className="font-medium text-foreground">Download the ACES Hub App:</span> From the Play Store for Android devices or the App Store for iOS devices.</li>
+                  <li><span className="font-medium text-foreground">Login or Register:</span> If you are already a user, simply log in. If not, register first and then log in.</li>
+                  <li><span className="font-medium text-foreground">Open the App:</span> Navigate to the menu screen and click on Events/Hackathon.</li>
+                  <li><span className="font-medium text-foreground">Register for the Event:</span> Go to the My Events or My Registrations section, select the Hack Revolution 2025, and click on Register. Ensure you select <span className="font-semibold">Solo</span> as the registration type. Choose the 5th Track: Data Analysis with Terraview.</li>
+                  <li><span className="font-medium text-foreground">Upload Required Files:</span> Prepare a ppt with an OWBX file in a Gdrive, and paste the Gdrive link on the last page of the ppt. And upload the PPT. Here is the sample link to PPT follow it <a href="https://docs.google.com/presentation/d/11HB2VGfh929GPezFkWs_CQvKwOOWDBCFW8Y88LH6858/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">PPT Template</a>.</li>
+                  <li><span className="font-medium text-foreground">Fill Out General Details:</span> Complete the form with your personal details.</li>
+                  <li><span className="font-medium text-foreground">Submit:</span> Once all details are filled out, submit your registration.</li>
+                </ol>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ margin: "-100px" }} transition={{ duration: 0.5, delay: 0.45 }} className="mb-12 sm:mb-16">
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="relative z-10">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">App Download Links</h2>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a href="https://play.google.com/store/apps/details?id=com.acesindiadev.hackathon" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-2 bg-secondary hover:bg-blue-500 text-white rounded-lg transition-smooth text-sm">Android: ACES Hub App on Play Store</a>
+                  <a href="https://apps.apple.com/in/app/aces-hub/id6473405011" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-smooth text-sm">iOS: ACES Hub App on App Store</a>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* Ready to Get Started Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-center mb-12 sm:mb-16"
           >
-            <Card className="glass-effect p-6 sm:p-8 md:p-10 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden mb-12 sm:mb-16">
+            <Card className="glass-effect p-8 sm:p-10 md:p-12 border border-secondary/30 hover:border-secondary/50 transition-all duration-300 group relative overflow-hidden bg-gradient-to-br from-secondary/10 to-transparent">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              <div className="relative z-10 text-center">
-                <h2 className="text-xl sm:text-2xl font-heading font-bold mb-6 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Registration Notice</h2>
-                <p className="text-base sm:text-lg text-muted-foreground mb-4">
-                  Registrations will begin after <span className="font-semibold text-secondary">25th October 2025</span>
+              <div className="relative z-10">
+                <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
+                  Ready to Get Started?
+                </h2>
+                <p className="text-muted-foreground mb-8 text-base sm:text-lg">
+                  Join the Terraview Track and showcase your data analytics skills
                 </p>
-                <p className="text-muted-foreground text-sm sm:text-base">
-                  Stay tuned for more updates on registration opening!
-                </p>
+                <Link to="/Terraview_registration" className="inline-block">
+                  <Button className="px-10 py-7 text-lg sm:text-xl font-bold bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-secondary-foreground transition-all duration-300 hover:scale-110 transform shadow-xl hover:shadow-secondary/50">
+                    Register Now
+                  </Button>
+                </Link>
               </div>
             </Card>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Contact Information (updated) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
           >
             <Card className="glass-effect p-6 sm:p-8 md:p-10 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden mb-12 sm:mb-16">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -249,20 +284,14 @@ const Terraview = () => {
                 <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8">
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-secondary" />
-                    <a href="mailto:hackrevolution@mjcollege.ac.in" className="text-secondary hover:text-secondary/80 transition-colors text-sm sm:text-base">
-                      hackrevolution@mjcollege.ac.in
+                    <a href="mailto:contact@aces-hub.com" className="text-secondary hover:text-secondary/80 transition-colors text-sm sm:text-base">
+                      contact@aces-hub.com
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="h-5 w-5 text-secondary" />
-                    <a href="tel:+919908784538" className="text-secondary hover:text-secondary/80 transition-colors text-sm sm:text-base">
-                      +91 99087 84538
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-secondary" />
-                    <a href="tel:+917780227803" className="text-secondary hover:text-secondary/80 transition-colors text-sm sm:text-base">
-                      +91 77802 27803
+                    <a href="tel:+918125981069" className="text-secondary hover:text-secondary/80 transition-colors text-sm sm:text-base">
+                      8125981069
                     </a>
                   </div>
                 </div>

@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import RegisterTrack from "./pages/RegisterTrack";
 import RegistrationSuccess from "./pages/RegistrationSuccess";
 import Terraview from "./pages/Terraview";
+import TerraviewRegistration from "./pages/Terraview_registration";
+import TerraviewSuccess from "./pages/TerraviewSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
               <Route path="/Register/:track" element={<RegisterTrack />} />
               <Route path="/registration-success" element={<RegistrationSuccess />} />
               <Route path="/Terraview" element={<Terraview />} />
+              <Route path="/Terraview_registration" element={<TerraviewRegistration />} />
+              <Route path="/Terraview-success" element={<TerraviewSuccess />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
