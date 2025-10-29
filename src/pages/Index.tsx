@@ -49,7 +49,7 @@ import { PixelImage } from "@/components/ui/pixel-image";
 
 const Index = () => {
   // Countdown target date: 27 October 2025
-  const targetDate = new Date("2025-10-28T12:00:00");
+  const targetDate = new Date("2025-11-03T00:00:00");
 
   // State for problem statements dialog
   const [selectedTrack, setSelectedTrack] = useState<(typeof tracks)[0] | null>(
@@ -333,8 +333,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Registrations Closed Message */}
-        <section id="home" className="py-0 px-3 sm:px-6 lg:px-8 anchor-offset">
+        {/* Terraview Registrations Deadline Counter */}
+        <section id="home" className="py-0 px-3 sm:px-6 lg:px-8 anchor-offset mb-8 sm:mb-12">
           <div className="w-full mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -343,15 +343,25 @@ const Index = () => {
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="glass-effect rounded-2xl p-5 sm:p-8 md:p-10 max-w-5xl mx-auto border border-secondary/20 backdrop-blur-xl"
             >
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-muted-foreground" />
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-center text-muted-foreground">
-                  Registrations Closed
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-secondary" />
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
+                  Terraview Registrations Deadline
                 </h2>
               </div>
-              <p className="text-center text-muted-foreground/80 text-sm sm:text-base">
-              Thank you for your participation! Stay tuned for the results!
+              <p className="text-center text-muted-foreground mb-6 text-sm sm:text-base">
+                Register now for the Terraview Track! Deadline: November 2nd, 2025
               </p>
+              <div className="flex justify-center">
+                <CountDown targetDate={new Date("2025-11-2T23:59:59")} />
+              </div>
+              <div className="flex justify-center mt-6">
+                <Link to="/Terraview">
+                  <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2">
+                    Register Now
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -517,15 +527,26 @@ const Index = () => {
                       {track.description}
                     </p>
                     <div className="flex flex-col gap-2 sm:gap-3">
-                      <Link to={track.link}>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 w-full text-xs sm:text-sm"
-                        >
-                          Learn More
-                        </Button>
-                      </Link>
+                      {track.isSpecial ? (
+                        <Link to="/Terraview">
+                          <Button
+                            size="sm"
+                            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300 w-full text-xs sm:text-sm"
+                          >
+                            Register Now
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Link to={track.link}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 w-full text-xs sm:text-sm"
+                          >
+                            Learn More
+                          </Button>
+                        </Link>
+                      )}
                     </div>
                   </Card>
                 </motion.div>
