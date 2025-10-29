@@ -93,8 +93,8 @@ const Terraview = () => {
                 <div className="space-y-3 text-sm sm:text-base">
                   <div className="flex items-start gap-3"><Calendar className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Date:</span> Saturday, Nov 8, 2025</div></div>
                   <div className="flex items-start gap-3"><Clock className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Time:</span> 10:30 AM – 1:00 PM</div></div>
-                  <div className="flex items-start gap-3"><MapPin className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Venue:</span> Seminar Hall, Block 4, Muffakham Jah College of Engineering and Technology</div></div>
-                  <div className="flex items-start gap-3"><Users className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Organized By:</span> E-Cell & CSI</div></div>
+                  <div className="flex items-start gap-3"><MapPin className="h-5 w-5 text-secondary mt-0.5 shrink-0" /><div><span className="font-semibold">Venue:</span> Seminar Hall, Block 4, Muffakham Jah College of Engineering and Technology</div></div>
+                  <div className="flex items-start gap-3"><Users className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Organized By:</span> CSI & E-CELL</div></div>
                   <div className="flex items-start gap-3"><Building2 className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Powered By:</span> ACES</div></div>
                   <div className="flex items-start gap-3"><GraduationCap className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Open To:</span> First-Year Students Only</div></div>
                   <div className="flex items-start gap-3"><Trophy className="h-5 w-5 text-secondary mt-0.5" /><div><span className="font-semibold">Prize Pool:</span> ₹30,000</div></div>

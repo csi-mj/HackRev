@@ -178,7 +178,7 @@ const TerraviewRegistration = () => {
                       type="file"
                       accept=".ppt,.pptx"
                       required
-                      className=" mt-1.5 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-secondary file:text-secondary-foreground hover:file:bg-secondary/90 file:cursor-pointer cursor-pointer"
+                      className=" mt-1.5 w-full max-w-full file:mr-2 sm:file:mr-4 file:py-2 file:px-3 sm:file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-secondary file:text-secondary-foreground hover:file:bg-secondary/90 file:cursor-pointer cursor-pointer"
                     />
                     <p className="text-xs text-muted-foreground mt-2">
                       Please use the official template to make your abstract. Get the template here: 
