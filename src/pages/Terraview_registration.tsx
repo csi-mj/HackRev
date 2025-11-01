@@ -14,8 +14,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Squares from "@/components/Squares";
-import { ArrowLeft, Upload } from "lucide-react";
+import { ArrowLeft, Upload, Info } from "lucide-react";
 
 const TerraviewRegistration = () => {
   const navigate = useNavigate();
@@ -44,6 +51,12 @@ const TerraviewRegistration = () => {
     const abstract = form.get("abstract") as File | null;
     if (!abstract || abstract.size === 0) {
       toast({ title: "Missing abstract", description: "Upload your PPT abstract.", variant: "destructive" });
+      return;
+    }
+
+    const acesScreenshot = form.get("aces_screenshot") as File | null;
+    if (!acesScreenshot || acesScreenshot.size === 0) {
+      toast({ title: "Missing ACES screenshot", description: "Upload your ACES App Registration Screenshot (PDF).", variant: "destructive" });
       return;
     }
 
@@ -82,6 +95,15 @@ const TerraviewRegistration = () => {
       const { data: pub } = supabase.storage.from("terraview_ab").getPublicUrl(storedPath);
       const abstractUrl = pub.publicUrl;
 
+      const acesFilename = `${Date.now()}_${Math.random().toString(36).slice(2)}_${acesScreenshot.name}`;
+      const { data: acesUploadRes, error: acesUploadErr } = await supabase.storage
+        .from("aces_t")
+        .upload(acesFilename, acesScreenshot, { upsert: false, contentType: acesScreenshot.type });
+      if (acesUploadErr) throw acesUploadErr;
+      const acesStoredPath = acesUploadRes?.path ?? acesFilename;
+      const { data: acesPub } = supabase.storage.from("aces_t").getPublicUrl(acesStoredPath);
+      const acesUrl = acesPub.publicUrl;
+
       const payload = {
         name: form.get("name"),
         college: form.get("college"),
@@ -90,6 +112,7 @@ const TerraviewRegistration = () => {
         roll_no: form.get("roll_no"),
         mobile_no: form.get("mobile_no"),
         abstract_url: abstractUrl,
+        aces_url: acesUrl,
         email_no: form.get("email_no"),
         created_at: new Date().toISOString(),
       } as const;
@@ -171,7 +194,7 @@ const TerraviewRegistration = () => {
                     <Input id="email_no" name="email_no" required type="email" placeholder="name@example.com" className="mt-1.5" />
                   </div>
                   <div className="sm:col-span-2">
-                    <Label htmlFor="abstract" className="text-foreground font-medium">Submission of Abstract (PPT) *</Label>
+                    <Label htmlFor="abstract" className="text-foreground font-medium">Submission of Abstract (Upload PPT) *</Label>
                     <Input
                       id="abstract"
                       name="abstract"
@@ -184,6 +207,92 @@ const TerraviewRegistration = () => {
                       Please use the official template to make your abstract. Get the template here: 
                       <a href="https://docs.google.com/presentation/d/11HB2VGfh929GPezFkWs_CQvKwOOWDBCFW8Y88LH6858/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="ml-1 text-secondary hover:underline">Terraview PPT Template</a>.
                     </p>
+                  </div>
+                  <div className="sm:col-span-2 space-y-3">
+                    <Label
+                      htmlFor="aces_screenshot"
+                      className="text-foreground font-medium"
+                    >
+                      Aces App Registration Screenshots (Upload PDF) *
+                    </Label>
+                    <Input
+                      id="aces_screenshot"
+                      name="aces_screenshot"
+                      type="file"
+                      accept=".pdf"
+                      required
+                      className=" mt-1.5 w-full max-w-full file:mr-2 sm:file:mr-4 file:py-2 file:px-3 sm:file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-secondary file:text-secondary-foreground hover:file:bg-secondary/90 file:cursor-pointer cursor-pointer"
+                    />
+
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground transition-all duration-300 w-full sm:w-auto mt-2"
+                        >
+                          <Info className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                          View Instructions
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="glass-effect max-w-lg sm:mx-0 w-[calc(100vw-2rem)] sm:w-auto fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <DialogHeader>
+                          <DialogTitle className="text-secondary text-lg font-heading font-bold text-center mb-4">
+                            ACES Hub Registration Instructions
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <div className="bg-muted/50 p-4 rounded-lg border border-border">
+                            <h3 className="text-secondary font-semibold mb-3">
+                              Instructions:
+                            </h3>
+                            <ol className="list-decimal list-inside space-y-2 text-base text-muted-foreground">
+                              <li>
+                                Open the Play Store or App Store and download
+                                the ACES Hub app.
+                              </li>
+                              <li>
+                                Register on the ACES Hub app for the Terraview Track.
+                              </li>
+                              <li>
+                                Attach a PDF containing a screenshot of your
+                                profile section from the ACES Hub app.
+                              </li>
+                              <li className="text-red-500 font-semibold">
+                                Failure to do so will lead to
+                                disqualification.
+                              </li>
+                            </ol>
+                          </div>
+                          <div className="flex flex-col sm:flex-row gap-3">
+                            <a
+                              href="https://play.google.com/store/apps/details?id=com.acesindiadev.hackathon"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 px-4 py-2 bg-secondary hover:bg-blue-500 text-white rounded-lg transition-smooth text-sm"
+                            >
+                              Google Play Store
+                            </a>
+                            <a
+                              href="https://apps.apple.com/in/app/aces-hub/id6473405011"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-smooth text-sm"
+                            >
+                              Apple App Store
+                            </a>
+                            <a
+                              href="/terra.pdf"
+                              download="Demo_PDF.pdf"
+                              className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-smooth text-sm"
+                            >
+                              Demo PDF
+                            </a>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center gap-3">

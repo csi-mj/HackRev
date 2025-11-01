@@ -117,11 +117,27 @@ const Terraview = () => {
                 </p>
                 <h3 className="font-semibold text-base sm:text-lg mb-3">Participants will:</h3>
                 <ul className="space-y-2 text-muted-foreground text-sm sm:text-base mb-6">
-                  <li>• Use datasets provided in the following drive link to create problem statements: <a className="text-secondary hover:underline" href="https://drive.google.com/drive/folders/1FErnI8Xo7MFYkri3Lmo34x39hFjJ2JAP" target="_blank" rel="noreferrer">Dataset Drive Link</a></li>
+                  <li>• Use datasets provided in the following drive link to create problem statements:</li>
+                </ul>
+                <div className="mb-6">
+                  <a 
+                    href="https://drive.google.com/drive/folders/1FErnI8Xo7MFYkri3Lmo34x39hFjJ2JAP" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-white rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-secondary/50"
+                  >
+                    <Database className="h-5 w-5" />
+                    Dataset Drive Link
+                  </a>
+                </div>
+                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base mb-6">
                   <li>• Perform analysis to uncover insights and propose data-driven solutions using Terraview.</li>
                   <li>• Generate compelling visualizations using Terraview and save them in OWBX format.</li>
-                  <li>• Present their work through a combination of PPTs, abstracts, and OWBX files.</li>
-                  <li>• Compress all required files, abstract and OWBX file into a .zip file and upload it for registration of the hackathon.</li>
+                  {/* <li>• Present your findings through a PPT containing all relevant visualizations. Ensure that the OWBX file is stored in a Google Drive folder, and include the Drive link on the final slide of the PPT before uploading it on our website.</li> */}
+                  <li>• Present your findings through a PPT containing all relevant visualizations. Ensure that the OWBX file is stored in a Google Drive folder, and include the Drive link on the final slide of the PPT. It is mandatory to upload this .pptx file on our website for the Terraview Track submission.</li>
+                  <li>• Also upload the same .pptx file on the ACES HUB Application.</li>
+                  <li>• It is mandatory to register on the ACES HUB Application as well.</li>
+                  <li>• Attach a PDF of the screenshot of your profile section from the ACES HUB Application on the website while registering for the Terraview Track.</li>
                 </ul>
                 <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 flex items-center bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">
                   <FileText className="h-5 w-5 sm:h-6 sm:w-6 mr-3 text-secondary" />
@@ -140,7 +156,7 @@ const Terraview = () => {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2">Abstract Submission</h3>
+                    <h3 className="font-semibold mb-2">PPT/Abstract Submission</h3>
                     <p className="text-muted-foreground">Participant must submit an abstract detailing:</p>
                     <ul className="space-y-2 text-muted-foreground mt-2">
                       <li>• The problem or dataset chosen for analysis.</li>
@@ -193,8 +209,16 @@ const Terraview = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="relative z-10">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Additional Information</h2>
-                <p className="text-muted-foreground mb-3">A detailed tutorial on how to use Terraview will be provided as part of the guidelines to assist participants in navigating the software effectively.</p>
-                <a href="https://www.youtube.com/playlist?list=PLrdKr6wzYfEJZjLLd8kRyjo7M1tmTFvEs" target="_blank" rel="noreferrer" className="text-secondary hover:underline">Terraview Tutorial Link</a>
+                <p className="text-muted-foreground mb-6">A detailed tutorial on how to use Terraview will be provided as part of the guidelines to assist participants in navigating the software effectively.</p>
+                <a 
+                  href="https://www.youtube.com/playlist?list=PLrdKr6wzYfEJZjLLd8kRyjo7M1tmTFvEs" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-white rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-secondary/50"
+                >
+                  <GraduationCap className="h-5 w-5" />
+                  Terraview Tutorial Link
+                </a>
               </div>
             </Card>
           </motion.div>
@@ -223,7 +247,20 @@ const Terraview = () => {
                   <li><span className="font-medium text-foreground">Login or Register:</span> If you are already a user, simply log in. If not, register first and then log in.</li>
                   <li><span className="font-medium text-foreground">Open the App:</span> Navigate to the menu screen and click on Events/Hackathon.</li>
                   <li><span className="font-medium text-foreground">Register for the Event:</span> Go to the My Events or My Registrations section, select the Hack Revolution 2025, and click on Register. Ensure you select <span className="font-semibold">Solo</span> as the registration type. Choose the 5th Track: Data Analysis with Terraview.</li>
-                  <li><span className="font-medium text-foreground">Upload Required Files:</span> Prepare a ppt with an OWBX file in a Gdrive, and paste the Gdrive link on the last page of the ppt. And upload the PPT. Here is the sample link to PPT follow it <a href="https://docs.google.com/presentation/d/11HB2VGfh929GPezFkWs_CQvKwOOWDBCFW8Y88LH6858/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">PPT Template</a>.</li>
+                  <li>
+                    <span className="font-medium text-foreground">Upload Required Files:</span> Prepare a ppt with an OWBX file in a Gdrive, and paste the Gdrive link on the last page of the ppt. And upload the PPT. Here is the sample link to PPT follow it:
+                    <div className="mt-3">
+                      <a 
+                        href="https://docs.google.com/presentation/d/11HB2VGfh929GPezFkWs_CQvKwOOWDBCFW8Y88LH6858/edit?usp=sharing" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-white rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-secondary/50"
+                      >
+                        <FileText className="h-5 w-5" />
+                        PPT Template
+                      </a>
+                    </div>
+                  </li>
                   <li><span className="font-medium text-foreground">Fill Out General Details:</span> Complete the form with your personal details.</li>
                   <li><span className="font-medium text-foreground">Submit:</span> Once all details are filled out, submit your registration.</li>
                 </ol>
