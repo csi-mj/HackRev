@@ -231,7 +231,7 @@ const Terraview = () => {
                 <h2 className="text-xl sm:text-2xl font-heading font-bold mb-4 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Key Dates to Remember</h2>
                 <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                   <li>• Workshop: Oct 29th, 2025 (1:30pm - 4:30pm)</li>
-                  <li>• Registrations: Sun Oct 26, 2025 - Nov 2nd, 2025</li>
+                  <li>• Registrations: Sun Oct 26, 2025 - Nov 4th, 2025</li>
                   <li>• Event Date: Nov 8, 2025</li>
                 </ul>
               </div>

@@ -351,7 +351,7 @@ const Index = () => {
                 </h2>
               </div>
               <p className="text-center text-muted-foreground mb-6 text-sm sm:text-base">
-                Register now for the Terraview Track! Deadline: November 2nd, 2025
+                Register now for the Terraview Track! Deadline: November 4th, 2025
               </p>
               <div className="flex justify-center">
                 <CountDown targetDate={targetDate} />
