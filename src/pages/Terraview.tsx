@@ -86,7 +86,8 @@ const Terraview = () => {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mb-12 sm:mb-16"
           >
-            <Card className="glass-effect p-6 sm:p-8 md:p-10 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
+            {/* <Card className="glass-effect p-5 sm:p-6 md:p-8 border border-border/50 hover:border-secondary/30 transition-all duration-300"> */}
+            <Card className="glass-effect p-6 sm:p-8 border border-border/50 hover:border-secondary/40 transition-all duration-300 group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               <div className="relative z-10">
                 <h2 className="text-2xl sm:text-3xl font-heading font-bold mb-6 bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent">Hack Revolution 2025: Data Analytics Using Terraview</h2>
