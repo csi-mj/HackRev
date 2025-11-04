@@ -69,11 +69,12 @@ const Terraview = () => {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Data Analytics track for first-year students using Terraview software
             </p>
-            <Link to="/Terraview_registration" className="inline-block">
-              <Button className="px-8 py-6 text-lg sm:text-xl font-bold bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-secondary-foreground transition-all duration-300 hover:scale-105 transform shadow-lg hover:shadow-secondary/50">
-                Register Now
-              </Button>
-            </Link>
+            <Button
+              disabled
+              className="px-8 py-6 text-lg sm:text-xl font-bold bg-muted text-muted-foreground cursor-not-allowed"
+            >
+              Registrations Closed
+            </Button>
           </motion.div>
 
           {/* Removed Poster Section */}
@@ -299,11 +300,12 @@ const Terraview = () => {
                 <p className="text-muted-foreground mb-8 text-base sm:text-lg">
                   Join the Terraview Track and showcase your data analytics skills
                 </p>
-                <Link to="/Terraview_registration" className="inline-block">
-                  <Button className="px-10 py-7 text-lg sm:text-xl font-bold bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary text-secondary-foreground transition-all duration-300 hover:scale-110 transform shadow-xl hover:shadow-secondary/50">
-                    Register Now
-                  </Button>
-                </Link>
+                <Button
+                  disabled
+                  className="px-10 py-7 text-lg sm:text-xl font-bold bg-muted text-muted-foreground cursor-not-allowed"
+                >
+                  Registrations Closed
+                </Button>
               </div>
             </Card>
           </motion.div>

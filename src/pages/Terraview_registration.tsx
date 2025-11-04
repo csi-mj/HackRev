@@ -296,9 +296,12 @@ const TerraviewRegistration = () => {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center gap-3">
-                  <Button type="submit" disabled={submitting} className="w-full sm:w-auto">
-                    <Upload className="h-4 w-4 mr-2" />
-                    {submitting ? "Submitting..." : "Submit Registration"}
+                  <Button
+                    type="button"
+                    disabled
+                    className="w-full sm:w-auto bg-muted text-muted-foreground cursor-not-allowed"
+                  >
+                    Registrations Closed
                   </Button>
                   <Link to="/Terraview" className="w-full sm:w-auto">
                     <Button type="button" variant="outline" className="w-full border-border/50">

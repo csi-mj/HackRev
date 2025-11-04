@@ -357,11 +357,12 @@ const Index = () => {
                 <CountDown targetDate={targetDate} />
               </div>
               <div className="flex justify-center mt-6">
-                <Link to="/Terraview">
-                  <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2">
-                    Register Now
-                  </Button>
-                </Link>
+                <Button
+                  disabled
+                  className="bg-muted text-muted-foreground cursor-not-allowed px-6 py-2"
+                >
+                  Registrations Closed
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -529,14 +530,13 @@ const Index = () => {
                     </p>
                     <div className="flex flex-col gap-2 sm:gap-3">
                       {track.isSpecial ? (
-                        <Link to="/Terraview">
-                          <Button
-                            size="sm"
-                            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300 w-full text-xs sm:text-sm"
-                          >
-                            Register Now
-                          </Button>
-                        </Link>
+                        <Button
+                          size="sm"
+                          disabled
+                          className="bg-muted text-muted-foreground cursor-not-allowed transition-all duration-300 w-full text-xs sm:text-sm"
+                        >
+                          Registrations Closed
+                        </Button>
                       ) : (
                         <Link to={track.link}>
                           <Button

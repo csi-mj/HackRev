@@ -172,14 +172,13 @@ const Navbar = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <Link to="/Terraview">
-                  <Button
-                    size="sm"
-                    className="px-5 py-1.5 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90"
-                  >
-                    Terraview Registrations
-                  </Button>
-                </Link>
+                <Button
+                  size="sm"
+                  disabled
+                  className="px-5 py-1.5 text-sm font-medium bg-muted text-muted-foreground cursor-not-allowed"
+                >
+                  Registrations Closed
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -295,14 +294,13 @@ const Navbar = () => {
                   }}
                   className="pt-2"
                 >
-                  <Link to="/Terraview" className="block" onClick={() => setIsOpen(false)}>
-                    <Button
-                      size="sm"
-                      className="w-full py-2 text-sm font-medium bg-secondary text-secondary-foreground hover:bg-secondary/90"
-                    >
-                      Terraview Registrations
-                    </Button>
-                  </Link>
+                  <Button
+                    size="sm"
+                    disabled
+                    className="w-full py-2 text-sm font-medium bg-muted text-muted-foreground cursor-not-allowed"
+                  >
+                    Registrations Closed
+                  </Button>
                 </motion.div>
               </div>
             </motion.div>
